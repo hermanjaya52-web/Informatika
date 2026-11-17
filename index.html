@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>BK2-TP1 Himpunan Data Terstruktur dan List</title>
+<meta name="description" content="Materi interaktif BK2-TP1 Informatika Kelas VII: himpunan data terstruktur dan daftar (list), lengkap dengan ruang praktik, latihan, dan refleksi.">
+<meta name="theme-color" content="#1F4E79">
+<meta property="og:title" content="BK2-TP1 Himpunan Data Terstruktur dan List">
+<meta property="og:description" content="Materi interaktif BK2-TP1 Informatika Kelas VII: himpunan data terstruktur dan daftar (list), lengkap dengan ruang praktik, latihan, dan refleksi.">
+<meta property="og:type" content="website">
+<meta name="author" content="Herman Jaya, S.Pd. - SMP Negeri 4 Rantau Panjang">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231F4E79'/%3E%3Crect x='6' y='7' width='20' height='4' rx='1' fill='%23fff'/%3E%3Crect x='6' y='14' width='20' height='4' rx='1' fill='%23fff'/%3E%3Crect x='6' y='21' width='20' height='4' rx='1' fill='%23C9561A'/%3E%3C/svg%3E">
+<style>
+:root{
+  --fs:9.5pt;
+  --bg:#F3F6FB;--surface:#FFFFFF;--fg:#1B2430;--muted:#546074;--line:#D3DCE8;--line2:#B4C2D4;
+  --navy:#1F4E79;--accent:#C9561A;--blue:#1F6FD0;--good:#1F7A3D;--bad:#B8321F;--gold:#B7791F;
+  --t-navy:#E8F0F8;--t-orange:#FDEBDD;--t-blue:#DCEBFA;--t-green:#DDF2E3;--t-purple:#EDE3F7;--t-bad:#FBE3DF;--t-gold:#FFF3D6;
+  --head:#E7EBF0;--btn:#1F4E79;--btn-fg:#FFFFFF;--hero:#1F4E79;--hero-fg:#FFFFFF;--hero-sub:#CFE0F1;
+  --code-bg:#ECF0F5;--focus:#E8702A;--shadow:0 2px 10px rgba(20,40,70,.08);
+  --font:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Liberation Sans",sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#10151C;--surface:#18202A;--fg:#E7ECF3;--muted:#9BA8BA;--line:#2E3947;--line2:#43526A;
+    --navy:#8EBBE8;--accent:#F28F52;--blue:#74AEF2;--good:#62C885;--bad:#F27D6C;--gold:#E8B54C;
+    --t-navy:#1D2A3A;--t-orange:#3A2A1F;--t-blue:#1C3250;--t-green:#1B3426;--t-purple:#2E2641;--t-bad:#3D2321;--t-gold:#3A3017;
+    --head:#222C38;--btn:#2F6AA3;--hero:#16314D;--hero-sub:#B7CCE3;--code-bg:#222C38;--focus:#F28F52;--shadow:none;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10151C;--surface:#18202A;--fg:#E7ECF3;--muted:#9BA8BA;--line:#2E3947;--line2:#43526A;
+  --navy:#8EBBE8;--accent:#F28F52;--blue:#74AEF2;--good:#62C885;--bad:#F27D6C;--gold:#E8B54C;
+  --t-navy:#1D2A3A;--t-orange:#3A2A1F;--t-blue:#1C3250;--t-green:#1B3426;--t-purple:#2E2641;--t-bad:#3D2321;--t-gold:#3A3017;
+  --head:#222C38;--btn:#2F6AA3;--hero:#16314D;--hero-sub:#B7CCE3;--code-bg:#222C38;--focus:#F28F52;--shadow:none;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{font-size:var(--fs);-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:60px}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 1rem/1.62 var(--font);letter-spacing:.01em;
+  padding:0 max(14px,env(safe-area-inset-right,0px)) 56px max(14px,env(safe-area-inset-left,0px));overflow-wrap:break-word}
+.wrap{max-width:880px;margin:0 auto}
+h1,h2,h3,h4{margin:0;font-family:var(--font);text-wrap:balance;line-height:1.25}
+h1{font-size:1.75rem;color:var(--hero-fg)}
+h2{font-size:1.28rem;color:var(--navy);margin-bottom:.5rem}
+h3{font-size:1.06rem;color:var(--navy);margin:1rem 0 .4rem}
+h4{font-size:1rem;color:var(--navy)}
+p{margin:0 0 .6rem}
+b,strong{font-weight:700}
+small,.small{font-size:.86rem;color:var(--muted)}
+a{color:var(--blue)}
+code,.k{font-family:inherit;font-weight:700;background:var(--code-bg);color:var(--navy);padding:0 .3rem;border-radius:4px;white-space:nowrap}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.ic{width:1.25em;height:1.25em;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.25em;flex:none}
+ul,ol{margin:.3rem 0 .6rem;padding-left:1.3rem}
+li{margin:.2rem 0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* header */
+.hero{background:var(--hero);color:var(--hero-fg);margin:0 calc(-1 * max(14px,env(safe-area-inset-left,0px)));padding:22px max(14px,env(safe-area-inset-left,0px)) 18px;border-bottom:4px solid var(--accent);position:relative;overflow:hidden}
+.hero .in{max-width:880px;margin:0 auto;position:relative;z-index:1}
+.hsvg{position:absolute;right:-24px;top:8px;width:260px;max-width:52%;opacity:.2;pointer-events:none}
+.hsvg rect{fill:#fff;opacity:.9}.hsvg line{stroke:#fff;stroke-width:2}
+.eyebrow{font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--hero-sub);margin-bottom:.4rem}
+.hero .tp{margin:.6rem 0 0;max-width:66ch;color:var(--hero-fg)}
+.hero .sub{color:var(--hero-sub);margin-top:.5rem;font-size:.92rem}
+.tools{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.tools button{min-height:42px;padding:0 14px;border:1.5px solid rgba(255,255,255,.55);background:rgba(255,255,255,.12);color:#fff;border-radius:8px;font-weight:700;display:inline-flex;align-items:center;gap:6px}
+.tools button:hover{background:rgba(255,255,255,.24)}
+.heroprog{margin-top:14px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);border-radius:10px;padding:10px 12px;max-width:520px}
+.heroprog .row{display:flex;justify-content:space-between;gap:8px;font-weight:700;font-size:.92rem}
+.heroprog .bar{background:rgba(255,255,255,.25);margin-top:6px}
+.heroprog .bar i{background:#FFC857}
+
+/* tabs */
+nav.tabs{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);margin:0 calc(-1 * max(14px,env(safe-area-inset-left,0px)));padding:0 max(14px,env(safe-area-inset-left,0px))}
+nav.tabs .in{max-width:880px;margin:0 auto;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav.tabs .in::-webkit-scrollbar{display:none}
+nav.tabs a{display:inline-flex;align-items:center;gap:6px;padding:0 12px;min-height:48px;text-decoration:none;color:var(--muted);font-weight:700;border-bottom:3px solid transparent;white-space:nowrap}
+nav.tabs a[aria-current="page"]{color:var(--navy);border-bottom-color:var(--accent)}
+nav.tabs a:hover{color:var(--navy)}
+#rbar{position:fixed;left:0;top:0;height:3px;width:0;background:var(--accent);z-index:50}
+main{padding-top:16px}
+section.pane[hidden]{display:none}
+
+/* kartu */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:14px;box-shadow:var(--shadow)}
+.card.itp{border-left:5px solid var(--navy)}
+.card.lab{border-left:5px solid var(--accent)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.ttl{display:flex;gap:10px;align-items:center}
+.ibub{width:38px;height:38px;border-radius:10px;background:var(--t-navy);color:var(--navy);display:grid;place-items:center;flex:none}
+.ibub .ic{width:22px;height:22px}
+.ibub.o{background:var(--t-orange);color:var(--accent)}.ibub.g{background:var(--t-green);color:var(--good)}.ibub.p{background:var(--t-purple);color:#6B3FA0}
+.pill{display:inline-block;font-size:.8rem;font-weight:700;padding:1px 9px;border-radius:12px;background:var(--t-navy);color:var(--navy)}
+.pill.ok{background:var(--t-green);color:var(--good)}
+.pill.o{background:var(--t-orange);color:var(--accent)}
+.btn{min-height:42px;background:var(--btn);color:var(--btn-fg);border:0;border-radius:8px;padding:0 14px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.btn:hover{filter:brightness(1.1)}
+.btn.ghost{background:transparent;color:var(--navy);border:1.5px solid var(--line2)}
+.btn.small{min-height:38px;padding:0 11px;font-size:.88rem}
+.btn.warn{background:var(--accent);color:#fff}
+.btn[aria-pressed="true"]{background:var(--good);color:#fff}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.tablebox{overflow-x:auto;margin:6px 0 10px;-webkit-overflow-scrolling:touch}
+table.t{border-collapse:collapse;width:100%;min-width:300px}
+table.t th,table.t td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top}
+table.t th{background:var(--head)}
+table.t td.n,table.t th.n{text-align:right}
+table.t td.c{text-align:center}
+.callout{border-left:5px solid var(--accent);background:var(--t-orange);padding:9px 12px;border-radius:0 8px 8px 0;margin:10px 0}
+.callout.blue{border-left-color:var(--blue);background:var(--t-blue)}
+.callout.green{border-left-color:var(--good);background:var(--t-green)}
+.callout.gold{border-left-color:var(--gold);background:var(--t-gold)}
+.callout b.h{display:block;margin-bottom:2px}
+.callout>*:last-child{margin-bottom:0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:8px 0}
+.kc{border:1px solid var(--line);border-top:4px solid var(--c,var(--navy));border-radius:10px;padding:10px 12px;background:var(--surface)}
+.kc b{display:block;color:var(--c,var(--navy));margin-bottom:2px}
+.kc p{margin:0;font-size:.95rem}
+.kc .ex{display:block;font-size:.86rem;color:var(--muted);margin-top:4px}
+.c-blue{--c:var(--navy)}.c-green{--c:var(--good)}.c-gold{--c:var(--gold)}.c-red{--c:var(--bad)}.c-orange{--c:var(--accent)}
+
+/* accordion */
+details.acc{background:var(--surface);border:1px solid var(--line);border-radius:10px;margin:10px 0;overflow:hidden}
+details.acc>summary{list-style:none;display:flex;align-items:center;gap:8px;padding:0 14px;min-height:48px;font-weight:700;cursor:pointer;color:var(--fg)}
+details.acc>summary::-webkit-details-marker{display:none}
+details.acc>summary::after{content:"";margin-left:auto;width:9px;height:9px;border-right:3px solid var(--muted);border-bottom:3px solid var(--muted);transform:rotate(45deg);transition:transform .2s;flex:none;margin-right:3px}
+details.acc[open]>summary::after{transform:rotate(-135deg)}
+details.acc[open]>summary{border-bottom:1px solid var(--line)}
+details.acc>.body{padding:10px 14px 12px}
+details.acc>.body>*:first-child{margin-top:0}
+details.acc>.body>*:last-child{margin-bottom:0}
+details.ans{border-left:5px solid var(--good);background:var(--t-green)}
+details.ans .ic{color:var(--good)}
+details.ref{border-left:5px solid var(--blue);background:var(--t-blue)}
+details.ref .ic{color:var(--blue)}
+.accbar{display:flex;gap:8px;justify-content:flex-end;margin:4px 0}
+
+/* peta konsep */
+.cmap{display:flex;flex-direction:column;gap:10px;margin:8px 0}
+.cm-root{text-align:center;background:var(--navy);color:var(--surface);border-radius:12px;padding:10px;font-weight:700}
+.cm-br{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.cm-b{border:2px solid var(--c);border-radius:12px;padding:10px 12px;background:var(--surface);position:relative}
+.cm-b h4{color:var(--c)}
+.cm-b ul{margin:.3rem 0 .4rem;padding-left:1.1rem}
+.cm-b a{font-size:.85rem;font-weight:700}
+
+/* tabel anatomi */
+.anat{border-collapse:collapse;margin:8px 0}
+.anat th,.anat td{border:1.5px solid var(--line2);padding:6px 12px;text-align:center;transition:background .2s}
+.anat th{background:var(--head)}
+.anat .hl{background:var(--t-orange);outline:2px solid var(--accent);outline-offset:-2px;font-weight:700}
+.seg{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+.seg button{min-height:40px;padding:0 12px;border:1.5px solid var(--line2);border-radius:20px;background:var(--surface);font-weight:700;color:var(--navy)}
+.seg button[aria-pressed="true"]{background:var(--navy);color:var(--surface);border-color:var(--navy)}
+.cmp{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.note{background:var(--t-orange);border:2px dashed var(--accent);border-radius:10px;padding:10px 12px;font-style:italic}
+.dataraw{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.dataraw span{background:var(--t-navy);border:1.5px solid var(--navy);border-radius:8px;padding:2px 12px;font-weight:700}
+.info{display:none;background:var(--t-green);border:2px solid var(--good);border-radius:10px;padding:8px 12px;margin-top:6px}
+.info.show{display:block}
+
+/* flow */
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:8px 0}
+.step{border:1.5px solid var(--navy);border-radius:10px;padding:8px;background:var(--t-navy);text-align:center;font-size:.92rem}
+.step .n{width:26px;height:26px;border-radius:50%;background:var(--navy);color:var(--surface);font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 4px}
+.step b{display:block;color:var(--navy)}
+
+/* kotak list */
+.lbox{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0;align-items:flex-start}
+.li{min-width:64px;max-width:150px;text-align:center;border:2px solid var(--navy);border-radius:8px;background:var(--t-navy);overflow:hidden;cursor:default}
+.li .v{padding:6px 8px;font-weight:700;word-break:break-word}
+.li .p{font-size:.8rem;background:var(--navy);color:var(--surface);padding:1px 4px}
+.li .x{font-size:.8rem;background:var(--t-purple);color:var(--fg);padding:1px 4px}
+.li.hl{border-color:var(--accent);background:var(--t-orange);animation:pop .45s}
+.li.new{border-color:var(--good);background:var(--t-green);animation:pop .45s}
+.li.found{border-color:var(--gold);background:var(--t-gold)}
+.li.act{outline:3px solid var(--focus)}
+@keyframes pop{0%{transform:scale(.7);opacity:.2}70%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+.emptylist{color:var(--muted);font-style:italic;padding:12px}
+.status{margin:8px 0;padding:8px 12px;border-radius:8px;background:var(--t-navy);display:grid;gap:2px;min-height:3.2em}
+.status b{color:var(--navy)}
+.msg{margin-top:6px;padding:7px 11px;border-radius:8px;background:var(--t-bad);display:none}
+.msg.show{display:block}
+.msg.okk{background:var(--t-green)}
+
+/* lab input */
+.fld{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;margin:8px 0}
+.fld label{display:flex;flex-direction:column;gap:3px;font-weight:700;font-size:.88rem;color:var(--muted)}
+.fld input,.fld select,.in-t{min-height:42px;border:1.5px solid var(--line2);border-radius:8px;padding:0 10px;background:var(--surface);color:var(--fg)}
+.fld input[type=number]{width:84px}
+.fld input.w{min-width:130px}
+textarea.in-t{min-height:78px;width:100%;padding:8px 10px;line-height:1.5;resize:vertical}
+.tin{width:100%;min-width:0;min-height:40px;border:1.5px solid var(--line2);border-radius:6px;padding:0 6px;background:var(--surface);text-align:left}
+.tin.ok{border-color:var(--good);background:var(--t-green)}
+.tin.no{border-color:var(--bad);background:var(--t-bad)}
+table.fill td{padding:3px}
+table.fill td.no{text-align:center;font-weight:700;width:34px}
+table.fill th{white-space:nowrap}
+table.sortable th{cursor:pointer;user-select:none;white-space:nowrap}
+table.sortable th::after{content:" \21C5";color:var(--muted);font-weight:400}
+table.sortable th[data-s="asc"]::after{content:" \25B2";color:var(--accent)}
+table.sortable th[data-s="desc"]::after{content:" \25BC";color:var(--accent)}
+table.sortable th.nosort{cursor:default}
+table.sortable th.nosort::after{content:""}
+.xbtn{min-height:34px;min-width:34px;border:1.5px solid var(--line2);background:transparent;border-radius:6px;color:var(--bad);font-weight:700}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:8px 0}
+.stat{background:var(--t-blue);border-radius:10px;padding:8px 10px}
+.stat small{display:block}
+.stat b{font-size:1.15rem;color:var(--navy)}
+
+/* misi */
+.chal{list-style:none;padding:0;margin:8px 0}
+.chal li{display:flex;gap:8px;align-items:flex-start;padding:6px 9px;border:1px solid var(--line);border-radius:8px;margin:4px 0;background:var(--surface)}
+.chal .ck{flex:none;width:22px;height:22px;border-radius:50%;border:2px solid var(--line2);display:flex;align-items:center;justify-content:center;color:transparent;margin-top:1px}
+.chal .ck .ic{width:14px;height:14px;stroke-width:3.5}
+.chal li.done{background:var(--t-green);border-color:var(--good)}
+.chal li.done .ck{background:var(--good);border-color:var(--good);color:#fff}
+.chal li.bonus .tx::before{content:"\2605  ";color:var(--gold)}
+.bar{height:9px;background:var(--head);border-radius:5px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--good);width:0;transition:width .3s}
+.donebadge{display:none}
+.card.isdone .donebadge{display:inline-block}
+
+/* detektif */
+.dq{display:flex;flex-direction:column;gap:6px;border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:6px 0;background:var(--surface)}
+.dq .tx{font-weight:700}
+.dq .bt{display:flex;gap:6px;flex-wrap:wrap}
+.dq .bt button{flex:1 1 130px}
+.dq.ok{border-color:var(--good);background:var(--t-green)}
+.dq.no{border-color:var(--bad);background:var(--t-bad)}
+.dq .why{font-size:.92rem;display:none}
+.dq.ok .why,.dq.no .why{display:block}
+
+/* susun list */
+.ar{display:flex;align-items:center;gap:6px;border:1.5px solid var(--navy);background:var(--t-navy);border-radius:8px;padding:3px 6px;margin:4px 0}
+.ar .no{width:26px;height:26px;border-radius:50%;background:var(--navy);color:var(--surface);display:grid;place-items:center;font-weight:700;font-size:.85rem;flex:none}
+.ar .nm{flex:1;font-weight:700}
+.ar button{min-width:42px;min-height:38px;border:1.5px solid var(--line2);border-radius:6px;background:var(--surface);font-weight:700;color:var(--navy)}
+.pool{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0}
+.pool button{min-height:40px;padding:0 12px;border:1.5px solid var(--line2);border-radius:20px;background:var(--surface);font-weight:700}
+.pool button[aria-pressed="true"]{background:var(--navy);color:var(--surface);border-color:var(--navy)}
+
+/* kasir */
+.items{display:grid;gap:6px;margin:8px 0}
+.items label{display:flex;align-items:center;gap:10px;min-height:44px;border:1.5px solid var(--line);border-radius:8px;padding:2px 10px;background:var(--surface);cursor:pointer}
+.items label.on{border-color:var(--navy);background:var(--t-navy)}
+.items input{width:20px;height:20px;flex:none}
+.items .pr{margin-left:auto;font-weight:700}
+.items .tg{font-size:.75rem;font-weight:700;border-radius:8px;padding:0 6px}
+.tg.min{background:var(--t-green);color:var(--good)}.tg.max{background:var(--t-bad);color:var(--bad)}
+
+/* kuis */
+.q{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:10px;background:var(--surface)}
+.q.ok{border-color:var(--good);background:var(--t-green)}
+.q.no{border-color:var(--bad);background:var(--t-bad)}
+.q .qt{font-weight:700;margin-bottom:6px}
+.q .op{display:flex;gap:10px;align-items:center;width:100%;min-height:44px;text-align:left;border:1.5px solid var(--line2);border-radius:8px;background:var(--surface);padding:4px 10px;margin:4px 0}
+.q .op .l{width:26px;height:26px;border-radius:50%;background:var(--head);display:grid;place-items:center;font-weight:700;flex:none}
+.q .op.right{border-color:var(--good);background:var(--t-green)}
+.q .op.wrong{border-color:var(--bad);background:var(--t-bad)}
+.q .op:disabled{cursor:default;opacity:1;color:inherit}
+.q .fb{display:none;margin-top:6px;font-size:.94rem}
+.q .fb.show{display:block}
+.score{font-size:1.5rem;font-weight:700;color:var(--navy)}
+
+/* kartu hafalan */
+.fc{perspective:1000px;margin:10px 0}
+.fcard{position:relative;display:block;width:100%;min-height:200px;transform-style:preserve-3d;transition:transform .5s;cursor:pointer;text-align:center}
+.fcard.flip{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;padding:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;border:2px solid var(--navy);overflow:auto}
+.face.front{background:var(--surface)}
+.face.front .term{font-size:1.5rem;font-weight:700;color:var(--navy)}
+.face.back{background:var(--navy);color:var(--surface);transform:rotateY(180deg)}
+.face .hint{font-size:.85rem;color:var(--muted)}
+.face.back .ex{font-size:.9rem;opacity:.9}
+.fcnav{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.fcnav .btn{flex:1 1 90px}
+
+/* progres / refleksi */
+.prog{display:grid;gap:10px}
+.prog .r{display:grid;grid-template-columns:150px 1fr 56px;gap:8px;align-items:center}
+@media (max-width:520px){.prog .r{grid-template-columns:1fr 1fr 48px}}
+.rate{display:grid;gap:8px;margin:8px 0}
+.rate .rw{border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--surface)}
+.rate .ch{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.rate .ch label{flex:1 1 80px;display:flex;justify-content:center;align-items:center;min-height:40px;border:1.5px solid var(--line2);border-radius:8px;cursor:pointer;font-weight:700}
+.rate .ch input{position:absolute;opacity:0;pointer-events:none}
+.rate .ch label:has(input:checked){background:var(--navy);color:var(--surface);border-color:var(--navy)}
+.rate .ch label:has(input:focus-visible){outline:3px solid var(--focus)}
+.src{display:grid;gap:8px}
+.src .it{border:1px solid var(--line);border-radius:10px;padding:8px 12px;background:var(--surface)}
+.src .it a{font-weight:700;word-break:break-all}
+.src .it small{display:block;margin-top:2px}
+.search{display:flex;gap:6px;align-items:center;margin:6px 0}
+.search input{flex:1;min-height:42px;border:1.5px solid var(--line2);border-radius:8px;padding:0 10px;background:var(--surface)}
+.toast{width:max-content;position:fixed;left:50%;bottom:max(18px,env(safe-area-inset-bottom,0px));transform:translate(-50%,40px);background:var(--navy);color:var(--surface);padding:9px 16px;border-radius:24px;font-weight:700;opacity:0;pointer-events:none;transition:.3s;z-index:60;max-width:92vw;text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+#top{position:fixed;right:max(14px,env(safe-area-inset-right,0px));bottom:max(70px,env(safe-area-inset-bottom,0px));width:46px;height:46px;border-radius:50%;border:0;background:var(--navy);color:var(--surface);display:none;place-items:center;z-index:30;box-shadow:0 3px 10px rgba(0,0,0,.25);padding:0}
+#top.on{display:grid}
+footer{margin-top:18px;text-align:center;color:var(--muted);font-size:.86rem}
+.noscript{background:var(--t-bad);padding:12px;margin:12px 0;border-radius:8px}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+@media print{
+  nav.tabs,.tools,#top,#rbar,.btnrow,.toast,.heroprog,.accbar,.fld,.hsvg{display:none!important}
+  body{background:#fff;color:#000;padding:0;font-size:10pt}
+  .hero{background:#fff;color:#000;border-bottom:2px solid #000}
+  h1{color:#000}
+  .card,details.acc{break-inside:avoid;box-shadow:none}
+  section.pane[hidden]{display:block!important}
+  .hero .tp,.hero .sub,.eyebrow{color:#000}
+}
+
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></symbol><symbol id="i-table" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></symbol><symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></symbol><symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></symbol><symbol id="i-flask" viewBox="0 0 24 24"><path d="M10 2v7.5L4 20a1 1 0 0 0 .9 1.5h14.2A1 1 0 0 0 20 20l-6-10.5V2M8.5 2h7"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol><symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol><symbol id="i-edit" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></symbol><symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></symbol><symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol><symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol><symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 1-15.5 6.2L3 16"/><path d="M3 21v-5h5"/><path d="M3 12A9 9 0 0 1 18.5 5.8L21 8"/><path d="M21 3v5h-5"/></symbol><symbol id="i-print" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol><symbol id="i-cards" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></symbol><symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol><symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></symbol><symbol id="i-map" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M8.5 7.5 10.5 16M15.5 7.5 13.5 16M9 6h6"/></symbol><symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16.2 7.8-2.1 6.3-6.3 2.1 2.1-6.3z"/></symbol><symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></symbol><symbol id="i-sort" viewBox="0 0 24 24"><path d="M3 6h13M3 12h9M3 18h5M17 8v12M17 20l-3-3M17 20l3-3"/></symbol><symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol></svg>
+<div id="rbar"></div>
+<div class="wrap">
+<header class="hero" id="mulai"><div class="in">
+  <svg class="hsvg" viewBox="0 0 260 180" aria-hidden="true"><rect x="10" y="10" width="70" height="30" rx="4"/><rect x="95" y="10" width="70" height="30" rx="4"/><rect x="180" y="10" width="70" height="30" rx="4"/><rect x="10" y="55" width="70" height="30" rx="4"/><rect x="95" y="55" width="70" height="30" rx="4"/><rect x="180" y="55" width="70" height="30" rx="4"/><rect x="10" y="100" width="70" height="30" rx="4"/><rect x="95" y="100" width="70" height="30" rx="4"/><rect x="180" y="100" width="70" height="30" rx="4"/></svg>
+  <div class="eyebrow">Informatika Kelas VII · Fase D · Berpikir Komputasional (BK2)</div>
+  <h1>BK2-TP1 · Himpunan Data Terstruktur dan Daftar (List)</h1>
+  <p class="tp">Tujuan pembelajaran: memahami konsep himpunan data terstruktur bervolume kecil dan struktur data daftar (list) beserta penerapannya.</p>
+  <div class="sub">Baca materi, coba langsung di ruang praktik, kerjakan latihan, lalu isi refleksi.</div>
+  <div class="tools">
+    <button id="btnTheme" type="button" aria-label="Ganti tema terang atau gelap"><svg class="ic" aria-hidden="true"><use href="#i-moon"/></svg><span>Mode gelap</span></button>
+    <button id="btnF1" type="button" aria-label="Perkecil huruf">A−</button>
+    <button id="btnF2" type="button" aria-label="Perbesar huruf">A+</button>
+    <button id="btnFz" type="button" disabled style="opacity:1;border-style:dashed">Huruf 9,5 pt</button>
+  </div>
+  <div class="heroprog" aria-live="polite"><div class="row"><span>Kemajuan belajarmu</span><span id="hpTxt">0 / 12</span></div><div class="bar"><i id="hpBar"></i></div></div>
+</div></header>
+
+<nav class="tabs" aria-label="Bagian halaman"><div class="in" id="tabs">
+  <a href="#materi" data-t="materi"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg>Materi</a>
+  <a href="#praktik" data-t="praktik"><svg class="ic" aria-hidden="true"><use href="#i-flask"/></svg>Ruang praktik</a>
+  <a href="#latihan" data-t="latihan"><svg class="ic" aria-hidden="true"><use href="#i-target"/></svg>Latihan</a>
+  <a href="#refleksi" data-t="refleksi"><svg class="ic" aria-hidden="true"><use href="#i-edit"/></svg>Refleksi</a>
+  <a href="#sumber" data-t="sumber"><svg class="ic" aria-hidden="true"><use href="#i-link"/></svg>Sumber</a>
+</div></nav>
+
+<noscript><div class="noscript">Halaman ini memakai JavaScript untuk bagian interaktif. Aktifkan JavaScript di browser agar ruang praktik, latihan, dan refleksi dapat dipakai.</div></noscript>
+
+<main>
+<!-- ================= MATERI ================= -->
+<section class="pane" id="p-materi">
+
+<div class="card">
+  <div class="ttl"><span class="ibub"><svg class="ic" aria-hidden="true"><use href="#i-bulb"/></svg></span><h2 style="margin:0">Mulai dari pertanyaan</h2></div>
+  <ul>
+    <li>Bagaimana kamu bisa langsung menemukan nilai tertinggi di kelas tanpa membaca semua catatan guru?</li>
+    <li>Mengapa daftar hadir ditulis dalam tabel, bukan seperti karangan?</li>
+    <li>Mengapa daftar belanja boleh acak, tetapi daftar siswa dibuat urut abjad?</li>
+  </ul>
+  <p class="small">Jawabannya ada di materi ini. Di akhir tiap bagian ada kotak hijau <b>Jawaban ITP</b> untuk memeriksa tujuanmu sendiri.</p>
+</div>
+
+<div class="card">
+  <div class="ttl"><span class="ibub"><svg class="ic" aria-hidden="true"><use href="#i-map"/></svg></span><h2 style="margin:0">Peta konsep</h2></div>
+  <div class="cmap">
+    <div class="cm-root">BK2-TP1 · Himpunan data terstruktur dan list</div>
+    <div class="cm-br">
+      <div class="cm-b c-blue"><h4>Data terstruktur</h4>
+        <ul><li>Baris, kolom, label, sel</li><li>5 ciri data terstruktur</li><li>Contoh: nilai, jadwal, harga, hadir</li></ul>
+        <a href="#itp1">ITP-1</a> · <a href="#itp2">ITP-2</a></div>
+      <div class="cm-b c-orange"><h4>List (daftar)</h4>
+        <ul><li>Berurutan, diakses lewat indeks</li><li>Terurut dan tidak terurut</li><li>Akses, cari, tambah, hapus, sisip</li></ul>
+        <a href="#itp3">ITP-3</a> · <a href="#itp4">ITP-4</a></div>
+    </div>
+  </div>
+  <div class="tablebox"><table class="t"><tr><th>Materi pokok</th><th>Indikator (ITP)</th><th class="c">Paham?</th></tr>
+    <tr><td>Pengertian dan ciri himpunan data terstruktur</td><td>ITP-1 Menjelaskan pengertian dan ciri dengan bahasa sendiri</td><td class="c" data-pm="1">☐</td></tr>
+    <tr><td>Contoh data terstruktur bervolume kecil</td><td>ITP-2 Memberi minimal tiga contoh</td><td class="c" data-pm="2">☐</td></tr>
+    <tr><td>Karakteristik list; terurut dan tidak terurut</td><td>ITP-3 Menjelaskan list, indeks, terurut vs tidak terurut</td><td class="c" data-pm="3">☐</td></tr>
+    <tr><td>Penerapan list dan menyusun list dari kasus</td><td>ITP-4 Menyusun list dari kasus sederhana</td><td class="c" data-pm="4">☐</td></tr>
+  </table></div>
+</div>
+
+<div class="accbar"><button class="btn ghost small" type="button" id="accOpen">Buka semua</button><button class="btn ghost small" type="button" id="accClose">Tutup semua</button></div>
+
+<!-- ITP 1 -->
+<div class="card itp" id="itp1">
+  <div class="row"><div class="ttl"><span class="ibub"><svg class="ic" aria-hidden="true"><use href="#i-table"/></svg></span><h2 style="margin:0">ITP-1 · Pengertian dan ciri data terstruktur</h2></div><button class="btn small" data-paham="1" aria-pressed="false" type="button">Saya paham</button></div>
+
+  <h3>1. Dari data menjadi informasi</h3>
+  <p><b>Data</b> adalah fakta mentah berupa angka, kata, gambar, atau suara yang belum memberi arti sendiri. Setelah ditata, dihitung, dan dibandingkan, data menjadi <b>informasi</b>.</p>
+  <div class="dataraw" aria-label="Data mentah"><span>80</span><span>75</span><span>90</span><span>85</span><span>70</span></div>
+  <button class="btn small" type="button" id="dIbtn">Olah data</button>
+  <div class="info" id="dInfo" aria-live="polite"><b>Informasi:</b> nilai rata-rata kelas = (80 + 75 + 90 + 85 + 70) ÷ 5 = <b>80</b>, dan nilai tertinggi <b>90</b> diraih Citra.</div>
+
+  <h3>2. Apa itu himpunan data terstruktur?</h3>
+  <p><b>Himpunan data terstruktur</b> adalah sekumpulan data yang ditata dengan aturan tertentu sehingga rapi, mudah dibaca, dicari, diurutkan, dan dihitung. Bentuk yang paling umum adalah <b>tabel</b> yang tersusun dari <b>baris</b> dan <b>kolom</b>.</p>
+  <div class="cmp">
+    <div><b class="small">Sebelum: catatan lisan yang tercecer</b><div class="note">“Ali kelas VII-A dapat 80. Budi VII-A 75. Citra kelas VII-B nilainya 90, Dina 85 (VII-B), lalu Eko VII-B 70.”</div></div>
+    <div><b class="small">Sesudah: tabel terstruktur</b>
+      <div class="tablebox" style="margin:0"><table class="t" style="min-width:240px"><tr><th>Nama</th><th>Kelas</th><th class="n">Nilai</th></tr><tr><td>Ali</td><td>VII-A</td><td class="n">80</td></tr><tr><td>Budi</td><td>VII-A</td><td class="n">75</td></tr><tr><td>Citra</td><td>VII-B</td><td class="n">90</td></tr><tr><td>Dina</td><td>VII-B</td><td class="n">85</td></tr><tr><td>Eko</td><td>VII-B</td><td class="n">70</td></tr></table></div></div>
+  </div>
+
+  <h3>3. Anatomi tabel data</h3>
+  <p>Ketuk salah satu tombol untuk melihat bagian tabel yang dimaksud.</p>
+  <div class="seg" id="anatSeg" role="group" aria-label="Bagian tabel"><button type="button" data-a="baris" aria-pressed="false">Baris</button><button type="button" data-a="kolom" aria-pressed="false">Kolom</button><button type="button" data-a="label" aria-pressed="false">Judul kolom</button><button type="button" data-a="sel" aria-pressed="false">Sel</button></div>
+  <div class="tablebox"><table class="anat" id="anatTbl" style="min-width:300px"><tbody></tbody></table></div>
+  <div class="callout blue" id="anatTxt" aria-live="polite"><b class="h">Pilih bagian tabel</b>Ketuk tombol di atas.</div>
+
+  <h3>4. Ciri-ciri himpunan data terstruktur</h3>
+  <div class="grid3">
+    <div class="kc c-blue"><b>1. Baris dan kolom</b><p>Setiap data punya tempat yang pasti.</p><span class="ex">Tabel nilai kelas</span></div>
+    <div class="kc c-green"><b>2. Kolom berlabel</b><p>Judul kolom menjelaskan isinya.</p><span class="ex">“Nama”, “Nilai”</span></div>
+    <div class="kc c-gold"><b>3. Satu kolom, satu jenis data</b><p>Tidak mencampur nama dan angka.</p><span class="ex">Kolom nilai hanya angka</span></div>
+    <div class="kc c-orange"><b>4. Baris seragam</b><p>Semua baris punya kolom yang sama.</p><span class="ex">Tiap murid: No, Nama, Kelas, Nilai</span></div>
+    <div class="kc c-red"><b>5. Mudah diolah</b><p>Mudah dicari, diurutkan, dan dihitung.</p><span class="ex">Rata-rata, nilai tertinggi</span></div>
+  </div>
+
+  <details class="acc ref"><summary><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg>Rujukan Buku Siswa</summary><div class="body">
+    <p>Buku Kelas VII hlm. 40–45: data dapat berupa teks, angka, gambar, grafis, suara, dan video; data juga dapat bersifat kualitatif (deskripsi) atau kuantitatif (angka). Hlm. 96: data yang telah diolah menghasilkan informasi, misalnya nilai ujian satu kelas.</p>
+    <p>Buku Kelas VII mendefinisikan struktur data sebagai cara tertentu untuk menyimpan dan mengatur data agar sesuai tujuan. Buku Kelas IX hlm. 19 menambahkan bahwa data terstruktur adalah data yang rapi dan sistematis dalam kolom dan baris.</p>
+    <p class="small">Isi buku diparafrasekan. Contoh data dan tabel adalah contoh buatan sendiri, bukan salinan buku.</p>
+  </div></details>
+  <details class="acc"><summary>Contoh kasus: nilai ulangan Informatika</summary><div class="body">
+    <p>Pertanyaan dari tabel di atas:</p>
+    <ol><li>Siapa nilai tertinggi? <b>Citra (90)</b>, terlihat dari kolom Nilai.</li><li>Rata-rata kelas? (80 + 75 + 90 + 85 + 70) ÷ 5 = 400 ÷ 5 = <b>80</b>.</li><li>Berapa murid di atas rata-rata? <b>Citra (90) dan Dina (85) = 2 murid</b>.</li></ol>
+    <p>Coba sendiri di <a href="#lab1">Ruang praktik 1</a>.</p>
+  </div></details>
+  <details class="acc ans"><summary><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Jawaban ITP-1 (dengan bahasa sendiri)</summary><div class="body">
+    <p><b>Pengertian:</b> himpunan data terstruktur adalah kumpulan data yang disusun rapi menurut aturan tertentu, biasanya berbentuk tabel dengan baris dan kolom, agar mudah dicari dan diolah.</p>
+    <p><b>Ciri-ciri:</b> (1) tertata dalam baris dan kolom, (2) kolom berlabel, (3) satu kolom satu jenis data, (4) setiap baris seragam, (5) mudah dicari, diurutkan, dan dihitung.</p>
+  </div></details>
+</div>
+
+<!-- ITP 2 -->
+<div class="card itp" id="itp2">
+  <div class="row"><div class="ttl"><span class="ibub g"><svg class="ic" aria-hidden="true"><use href="#i-grid"/></svg></span><h2 style="margin:0">ITP-2 · Contoh data terstruktur bervolume kecil</h2></div><button class="btn small" data-paham="2" aria-pressed="false" type="button">Saya paham</button></div>
+  <p>Data <b>bervolume kecil</b> berisi puluhan data sehingga masih dapat dibaca, ditulis, dan dikelola manual atau dengan aplikasi sederhana. Data bervolume sangat besar memerlukan alat khusus dan dipelajari pada jenjang lebih lanjut.</p>
+  <div class="seg" id="exSeg" role="group" aria-label="Pilih contoh"><button type="button" data-e="nilai" aria-pressed="true">Daftar nilai</button><button type="button" data-e="jadwal" aria-pressed="false">Jadwal</button><button type="button" data-e="harga" aria-pressed="false">Daftar harga</button><button type="button" data-e="hadir" aria-pressed="false">Daftar hadir</button></div>
+  <div class="tablebox"><table class="t" id="exTbl"></table></div>
+  <p class="small" id="exCap"></p>
+  <h3>Contoh lain di sekitarmu</h3>
+  <ul><li>Data kegemaran teman sekelas (nama, kegiatan favorit, waktu per pekan, biaya per bulan), seperti Aktivitas VII-BK-19-U Buku Siswa hlm. 42–43.</li><li>Daftar buku perpustakaan kelas (judul, penulis, jumlah).</li><li>Daftar iuran kas (nama, tanggal, jumlah).</li><li>Daftar kontak darurat (nama, hubungan, nomor telepon).</li></ul>
+  <h3>Bukan himpunan data terstruktur</h3>
+  <div class="tablebox"><table class="t"><tr><th>Contoh</th><th>Alasan</th></tr><tr><td>Pesan suara panjang tentang nilai tanpa catatan</td><td>Tidak berbaris-berkolom dan tidak berlabel</td></tr><tr><td>Paragraf cerita tentang acara kelas</td><td>Data tercampur dalam kalimat, sulit dicari dan dihitung</td></tr></table></div>
+  <details class="acc"><summary>Contoh kasus: kantin sekolah</summary><div class="body">
+    <p>Murid membeli nasi kuning + es teh + gorengan.</p>
+    <ul><li>Total = 5.000 + 3.000 + 2.000 = <b>Rp10.000</b>.</li><li>Termurah: gorengan (Rp2.000). Termahal: nasi kuning (Rp5.000).</li><li>Membawa Rp15.000 → kembalian = 15.000 − 10.000 = <b>Rp5.000</b>.</li></ul>
+    <p>Tanpa tabel informasi ini sulit ditemukan cepat. Coba di <a href="#lab6">Ruang praktik 6</a>.</p>
+  </div></details>
+  <details class="acc ans"><summary><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Jawaban ITP-2</summary><div class="body"><p>Tiga contoh himpunan data terstruktur bervolume kecil: (1) daftar nilai kelas, (2) jadwal pelajaran, (3) daftar harga di kantin. Contoh tambahan: daftar hadir dan daftar iuran kas.</p></div></details>
+</div>
+
+<!-- ITP 3 -->
+<div class="card itp" id="itp3">
+  <div class="row"><div class="ttl"><span class="ibub o"><svg class="ic" aria-hidden="true"><use href="#i-list"/></svg></span><h2 style="margin:0">ITP-3 · Karakteristik list</h2></div><button class="btn small" data-paham="3" aria-pressed="false" type="button">Saya paham</button></div>
+  <p><b>List (daftar)</b> adalah struktur data berupa kumpulan item yang tersusun berurutan. Setiap item menempati sebuah posisi dan dapat diakses melalui nomor posisinya yang disebut <b>indeks</b>. Daftar belanja dan daftar siswa adalah contoh list.</p>
+  <div class="grid3">
+    <div class="kc c-blue"><b>Berurutan</b><p>Item punya urutan posisi tetap.</p><span class="ex">Buku tulis posisi ke-1, Pensil ke-2, …</span></div>
+    <div class="kc c-green"><b>Diakses lewat indeks</b><p>Ambil item dengan menyebut nomornya.</p><span class="ex">Posisi ke-3 → Penggaris</span></div>
+    <div class="kc c-gold"><b>Boleh item kembar</b><p>Nilai yang sama dapat muncul lagi.</p><span class="ex">Nilai 80 muncul dua kali</span></div>
+    <div class="kc c-orange"><b>Panjang dapat berubah</b><p>Item bisa ditambah, dihapus, disisip.</p><span class="ex">Tambah “Lem” ke daftar belanja</span></div>
+  </div>
+
+  <h3>Posisi dan indeks</h3>
+  <p>Ketuk salah satu kotak item.</p>
+  <div class="lbox" id="pxBox" role="group" aria-label="Contoh list"></div>
+  <div class="btnrow"><button class="btn small ghost" type="button" id="pxBtn" aria-pressed="true">Indeks: tampil</button></div>
+  <div class="callout blue" id="pxTxt" aria-live="polite"><b class="h">Item ke-?</b>Ketuk sebuah kotak.</div>
+  <div class="callout"><b class="h">Hati-hati: posisi ke-1 = indeks 0</b>Dalam kehidupan sehari-hari kita menghitung dari 1 (posisi ke-1). Banyak bahasa pemrograman memberi indeks mulai dari 0. Posisi ke-<i>n</i> memiliki indeks <i>n</i> − 1. Di sini kata “posisi” dipakai untuk bahasa sehari-hari dan “indeks” untuk penomoran yang dimulai dari 0.</div>
+
+  <h3>List terurut dan tidak terurut</h3>
+  <div class="tablebox"><table class="t"><tr><th>Pembeda</th><th>Terurut</th><th>Tidak terurut</th></tr>
+    <tr><td>Aturan urutan</td><td>Mengikuti aturan (abjad, kecil ke besar, tanggal)</td><td>Tidak ada aturan urutan khusus</td></tr>
+    <tr><td>Contoh</td><td>Daftar siswa A–Z; nilai kecil ke besar</td><td>Daftar belanja; daftar tugas bebas</td></tr>
+    <tr><td>Keuntungan</td><td>Mudah mencari karena posisi dapat diperkirakan</td><td>Mudah dibuat dan ditambah</td></tr>
+    <tr><td>Saat menyisipkan</td><td>Item baru ditempatkan sesuai aturan urutan</td><td>Item baru boleh di mana saja</td></tr></table></div>
+
+  <h3>Operasi dasar pada list</h3>
+  <p class="small">Daftar belanja awal: Buku tulis, Pensil, Penggaris, Penghapus, Spidol (5 item).</p>
+  <div class="tablebox"><table class="t" style="min-width:420px"><tr><th>Operasi</th><th>Cara kerja</th><th>Hasil</th></tr>
+    <tr><td><b>Akses</b></td><td>Ambil item pada posisi tertentu</td><td>Posisi ke-3 → Penggaris</td></tr>
+    <tr><td><b>Cari</b></td><td>Telusuri dari awal sampai ketemu</td><td>“Spidol” di posisi ke-5</td></tr>
+    <tr><td><b>Tambah</b></td><td>Letakkan item baru di akhir</td><td>Tambah “Lem” → 6 item</td></tr>
+    <tr><td><b>Hapus</b></td><td>Buang item; item sesudahnya bergeser maju</td><td>Hapus “Pensil” → Buku tulis, Penggaris, Penghapus, Spidol, Lem (5 item)</td></tr>
+    <tr><td><b>Sisip</b></td><td>Masukkan item di posisi tertentu; item sesudahnya bergeser mundur</td><td>Sisip “Gunting” di posisi 2 → Buku tulis, Gunting, Penggaris, Penghapus, Spidol, Lem (6 item)</td></tr></table></div>
+  <p>Coba semuanya di <a href="#lab4">Mesin List</a>.</p>
+
+  <details class="acc ref"><summary><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg>Rujukan Buku Siswa</summary><div class="body">
+    <p>Buku Kelas VII hlm. 9 (Bab 1.A.1.c): list/daftar digambarkan lewat daftar belanja (Gambar 1.5) serta pembedaan daftar siswa yang terurut abjad dengan daftar belanja yang tidak terurut. QR dan Aktivitas VII-BK-04-U “Kata Rahasia” mengajak murid berlatih menyusun list. Konten daring pada tautan QR tidak ikut tercantum di teks buku.</p>
+  </div></details>
+  <details class="acc ans"><summary><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Jawaban ITP-3</summary><div class="body">
+    <p><b>Karakteristik list:</b> berurutan (setiap item punya posisi tetap) dan diakses melalui posisi/indeks.</p>
+    <p><b>Terurut</b> = mengikuti aturan urutan, misalnya daftar siswa urut abjad: Ali, Budi, Citra, Dina, Eko. <b>Tidak terurut</b> = tanpa aturan urutan, misalnya daftar belanja: Tomat, Wortel, Beras, Minyak, Garam.</p>
+  </div></details>
+</div>
+
+<!-- ITP 4 -->
+<div class="card itp" id="itp4">
+  <div class="row"><div class="ttl"><span class="ibub p"><svg class="ic" aria-hidden="true"><use href="#i-edit"/></svg></span><h2 style="margin:0">ITP-4 · Menyusun list dari kasus</h2></div><button class="btn small" data-paham="4" aria-pressed="false" type="button">Saya paham</button></div>
+  <div class="tablebox"><table class="t"><tr><th>Penerapan</th><th>Isi list</th><th>Jenis</th></tr>
+    <tr><td>Daftar belanja</td><td>Nama barang yang dibeli</td><td>Tidak terurut</td></tr>
+    <tr><td>Daftar hadir</td><td>Nama murid dan keterangan</td><td>Terurut (nomor absen/abjad)</td></tr>
+    <tr><td>Daftar siswa</td><td>Nama murid satu kelas</td><td>Terurut abjad</td></tr>
+    <tr><td>Daftar tugas (to-do)</td><td>Pekerjaan yang harus selesai</td><td>Dapat keduanya</td></tr></table></div>
+  <h3>Lima langkah menyusun list</h3>
+  <div class="flow">
+    <div class="step"><div class="n">1</div><b>Pahami kasus</b>Apa yang didaftar? Untuk apa?</div>
+    <div class="step"><div class="n">2</div><b>Kumpulkan item</b>Item apa saja yang masuk?</div>
+    <div class="step"><div class="n">3</div><b>Tentukan urutan</b>Abjad, nomor absen, atau bebas?</div>
+    <div class="step"><div class="n">4</div><b>Beri nomor</b>Posisi dan indeks tiap item</div>
+    <div class="step"><div class="n">5</div><b>Periksa</b>Ada yang terlewat atau ganda?</div>
+  </div>
+  <details class="acc"><summary>Kasus 1 · Daftar belanja bazar kelas</summary><div class="body">
+    <p>Kelas VII-A menjual es buah di bazar. Ketua kelas perlu daftar bahan.</p>
+    <ol><li>Pahami: daftar bahan belanja bazar es buah.</li><li>Kumpulkan: semangka, melon, sirup, gula, gelas plastik.</li><li>Urutan: tidak terurut (boleh dibeli kapan saja).</li><li>Posisi: semangka (1), melon (2), sirup (3), gula (4), gelas plastik (5). Indeks 0 sampai 4.</li><li>Periksa: lupa sendok → tambah di akhir, panjang list menjadi <b>6</b>.</li></ol>
+  </div></details>
+  <details class="acc"><summary>Kasus 2 · Daftar hadir</summary><div class="body">
+    <p>Sekretaris mencatat kehadiran 10 November: Ali hadir, Budi sakit, Citra hadir, Dina izin, Eko hadir.</p>
+    <ul><li>Urutan memakai nomor absen (terurut).</li><li>Murid pada posisi ke-4 adalah <b>Dina (izin)</b>.</li><li>Hadir = 3 dari 5 murid; persentase = 3 ÷ 5 × 100% = <b>60%</b>.</li></ul>
+  </div></details>
+  <details class="acc"><summary>Kasus 3 · Daftar siswa piket</summary><div class="body">
+    <p>Piket Senin terurut abjad: Andi, Bagas, Citra, Dewi, Fajar, Gita (6 murid). Bagas sakit lalu dihapus, dan Eko menggantikan.</p>
+    <ol><li>Hapus Bagas → Andi, Citra, Dewi, Fajar, Gita (5 murid).</li><li>Eko disisipkan sesuai abjad: sesudah Dewi (D), sebelum Fajar (F), yaitu <b>posisi ke-4</b>.</li><li>Hasil: Andi, Citra, Dewi, Eko, Fajar, Gita (6 murid, tetap terurut).</li></ol>
+  </div></details>
+  <details class="acc ans"><summary><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Jawaban ITP-4</summary><div class="body">
+    <p>Daftar belanja (tidak terurut): Buku tulis, Pensil, Penggaris, Penghapus, Spidol.</p>
+    <p>Daftar hadir (terurut nomor absen): 1. Ali – Hadir, 2. Budi – Sakit, 3. Citra – Hadir, 4. Dina – Izin, 5. Eko – Hadir.</p>
+    <p>Keduanya disusun dengan lima langkah: pahami kasus, kumpulkan item, tentukan urutan, beri posisi/indeks, periksa dan perbaiki.</p>
+  </div></details>
+</div>
+
+<!-- Kartu, rangkuman, glosarium -->
+<div class="card" id="kartu">
+  <div class="ttl"><span class="ibub o"><svg class="ic" aria-hidden="true"><use href="#i-cards"/></svg></span><h2 style="margin:0">Kartu istilah</h2></div>
+  <p class="small">Ketuk kartu untuk membalik. Kartu bisa dibuka dengan Enter atau Spasi.</p>
+  <div class="fc"><div class="fcard" id="fcard" role="button" tabindex="0" aria-label="Kartu istilah, ketuk untuk membalik">
+    <span class="face front"><span class="term" id="fcTerm"></span><span class="hint">ketuk untuk melihat arti</span></span>
+    <span class="face back"><span id="fcDef"></span><span class="ex" id="fcEx"></span></span>
+  </div></div>
+  <div class="fcnav"><button class="btn ghost" type="button" id="fcPrev">Sebelumnya</button><span id="fcNum" style="font-weight:700;color:var(--muted)">1 / 10</span><button class="btn" type="button" id="fcNext">Berikutnya</button><button class="btn ghost" type="button" id="fcRand">Acak</button></div>
+</div>
+
+<div class="card">
+  <div class="ttl"><span class="ibub g"><svg class="ic" aria-hidden="true"><use href="#i-star"/></svg></span><h2 style="margin:0">Rangkuman inti</h2></div>
+  <ul>
+    <li>Data = fakta mentah; informasi = data yang sudah diolah dan bermakna.</li>
+    <li>Himpunan data terstruktur = data tertata dalam baris dan kolom berlabel; mudah dicari, diurutkan, dan dihitung.</li>
+    <li>Contoh bervolume kecil: daftar nilai, jadwal, daftar harga, daftar hadir.</li>
+    <li>List = kumpulan item berurutan yang diakses lewat posisi/indeks (posisi ke-<i>n</i> = indeks <i>n</i> − 1).</li>
+    <li>List terurut mengikuti aturan urutan; tidak terurut tidak punya aturan.</li>
+    <li>Operasi dasar: akses, cari, tambah, hapus, sisip.</li>
+    <li>Menyusun list: pahami kasus → kumpulkan item → tentukan urutan → beri posisi → periksa.</li>
+  </ul>
+  <h3>Glosarium</h3>
+  <div class="search"><input id="gSearch" type="search" placeholder="Cari istilah…" aria-label="Cari istilah glosarium"></div>
+  <div class="tablebox"><table class="t" id="gTbl"><tr><th>Istilah</th><th>Arti</th></tr>
+    <tr><td><b>Data</b></td><td>Fakta mentah berupa angka, kata, gambar, atau suara</td></tr>
+    <tr><td><b>Informasi</b></td><td>Data yang telah diolah sehingga bermakna</td></tr>
+    <tr><td><b>Struktur data</b></td><td>Cara menyimpan dan mengatur data agar dapat diakses dan diolah dengan tepat</td></tr>
+    <tr><td><b>Himpunan data terstruktur</b></td><td>Data yang ditata dengan aturan tertentu, umumnya berupa tabel baris dan kolom</td></tr>
+    <tr><td><b>Baris</b></td><td>Satu data lengkap dalam tabel</td></tr>
+    <tr><td><b>Kolom / field</b></td><td>Satu jenis data pada tabel</td></tr>
+    <tr><td><b>Sel</b></td><td>Pertemuan satu baris dan satu kolom (satu nilai)</td></tr>
+    <tr><td><b>List / daftar</b></td><td>Kumpulan item berurutan yang diakses lewat indeks</td></tr>
+    <tr><td><b>Indeks</b></td><td>Nomor yang menunjukkan letak item dalam list</td></tr>
+    <tr><td><b>Terurut</b></td><td>Item mengikuti aturan urutan tertentu</td></tr>
+    <tr><td><b>Tidak terurut</b></td><td>Item tanpa aturan urutan khusus</td></tr>
+    <tr><td><b>Bervolume kecil</b></td><td>Jumlah data sedikit (puluhan) sehingga mudah dikelola langsung</td></tr>
+  </table></div>
+  <p class="small" id="gEmpty" style="display:none">Istilah tidak ditemukan.</p>
+</div>
+
+<details class="acc"><summary><svg class="ic" aria-hidden="true"><use href="#i-compass"/></svg>Alur belajar 3 JP dan rubrik ketercapaian</summary><div class="body">
+  <h4>Alur belajar (usulan)</h4>
+  <div class="tablebox"><table class="t" style="min-width:420px"><tr><th>JP</th><th>Tahap</th><th>Kegiatan</th><th>ITP</th></tr>
+    <tr><td>1</td><td>Memahami</td><td>Mengamati catatan nilai tidak terstruktur dan tabel terstruktur; menyimpulkan pengertian dan ciri; mengumpulkan contoh.</td><td>1, 2</td></tr>
+    <tr><td>2</td><td>Memahami → Mengaplikasi</td><td>Mengamati daftar belanja dan daftar siswa; menemukan sifat berurutan dan indeks; berlatih akses, tambah, hapus, sisip.</td><td>3</td></tr>
+    <tr><td>3</td><td>Mengaplikasi → Merefleksi</td><td>Menyusun list dari kasus, saling memeriksa antarkelompok, mengisi refleksi.</td><td>4</td></tr></table></div>
+  <h4>Keterkaitan TPACK-STEM (T · M)</h4>
+  <ul><li><b>Technology:</b> menyusun tabel dan list dengan aplikasi lembar kerja atau pencatat daring; opsional bahasa pemrograman yang mendukung list.</li><li><b>Mathematics:</b> menghitung total belanja, rata-rata nilai, persentase kehadiran; memakai urutan bilangan dan nomor posisi/indeks.</li></ul>
+  <h4>Rubrik singkat</h4>
+  <div class="tablebox"><table class="t" style="min-width:480px"><tr><th>ITP</th><th>Perlu bimbingan</th><th>Cakap</th><th>Mahir</th></tr>
+    <tr><td>1</td><td>Menyebut pengertian atau ciri terbatas</td><td>Menjelaskan pengertian dan ≥3 ciri</td><td>Membedakan terstruktur vs tidak terstruktur dengan contoh</td></tr>
+    <tr><td>2</td><td>1 contoh tepat</td><td>≥3 contoh bervolume kecil dengan kolomnya</td><td>≥3 contoh disertai alasan</td></tr>
+    <tr><td>3</td><td>Menyebut satu karakteristik</td><td>Menjelaskan berurutan, indeks, terurut vs tidak</td><td>Menerapkan tambah/hapus/sisip dengan tepat</td></tr>
+    <tr><td>4</td><td>List belum lengkap atau urutan belum sesuai</td><td>List lengkap dan sesuai kasus</td><td>List lengkap, diperiksa, dan memberi alasan urutan</td></tr></table></div>
+</div></details>
+</section>
+
+<!-- ================= PRAKTIK ================= -->
+<section class="pane" id="p-praktik" hidden>
+<div class="card">
+  <h2>Ruang praktik</h2>
+  <p>Enam kegiatan untuk mencoba langsung. Setiap kegiatan punya misi; kegiatan ditandai selesai bila misinya tuntas. Kamu boleh mengerjakan dalam urutan apa saja.</p>
+  <div class="bar" aria-hidden="true"><i id="lpBar"></i></div><p class="small" id="lpTxt" style="margin-top:4px">0 dari 6 kegiatan selesai</p>
+</div>
+
+<!-- P1 -->
+<div class="card lab" id="lab1" data-lab="p1">
+  <div class="row"><div class="ttl"><span class="ibub o"><svg class="ic" aria-hidden="true"><use href="#i-table"/></svg></span><h2 style="margin:0">1 · Tata catatan menjadi tabel</h2></div><span class="pill ok donebadge">Selesai ✓</span></div>
+  <p class="small">ITP-1 · ITP-2</p>
+  <div class="note">“Ali kelas VII-A nilainya 80. Budi VII-A dapat 75. Citra dari VII-B mendapat 90. Dina VII-B 85, dan Eko VII-B 70.”</div>
+  <p style="margin-top:8px"><b>Misi:</b> isi tabel di bawah sesuai catatan, lalu tekan Periksa.</p>
+  <div class="tablebox"><table class="t fill" id="p1Tbl" style="min-width:300px"><tr><th>No</th><th>Nama</th><th>Kelas</th><th>Nilai</th></tr></table></div>
+  <div class="btnrow"><button class="btn" type="button" id="p1Chk">Periksa</button><button class="btn ghost" type="button" id="p1Show">Isi jawaban</button><button class="btn ghost" type="button" id="p1Rst">Ulangi</button></div>
+  <div class="msg" id="p1Msg" role="status"></div>
+  <div class="stats" id="p1Stats" hidden></div>
+</div>
+
+<!-- P2 -->
+<div class="card lab" id="lab2" data-lab="p2">
+  <div class="row"><div class="ttl"><span class="ibub o"><svg class="ic" aria-hidden="true"><use href="#i-sort"/></svg></span><h2 style="margin:0">2 · Tabel nilai hidup</h2></div><span class="pill ok donebadge">Selesai ✓</span></div>
+  <p class="small">ITP-1 · Data terstruktur mudah dicari, diurutkan, dan dihitung.</p>
+  <ul class="chal" id="p2Ch"></ul>
+  <div class="fld"><label>Saring kelas<select id="p2Fil"><option value="">Semua</option><option>VII-A</option><option>VII-B</option></select></label><span class="small" style="align-self:center">Ketuk judul kolom untuk mengurutkan.</span></div>
+  <div class="tablebox"><table class="t sortable" id="p2Tbl"></table></div>
+  <div class="stats" id="p2Stats"></div>
+  <h3>Tambah data</h3>
+  <div class="fld"><label>Nama<input id="p2Nm" class="w" type="text" maxlength="20" autocomplete="off"></label><label>Kelas<select id="p2Kl"><option>VII-A</option><option>VII-B</option></select></label><label>Nilai<input id="p2Nl" type="text" inputmode="decimal" maxlength="6" autocomplete="off"></label><button class="btn" type="button" id="p2Add">Tambah</button></div>
+  <div class="msg" id="p2Msg" role="status"></div>
+  <div class="btnrow"><button class="btn ghost small" type="button" id="p2Rst">Kembalikan data awal</button></div>
+</div>
+
+<!-- P3 -->
+<div class="card lab" id="lab3" data-lab="p3">
+  <div class="row"><div class="ttl"><span class="ibub o"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg></span><h2 style="margin:0">3 · Detektif data</h2></div><span class="pill ok donebadge">Selesai ✓</span></div>
+  <p class="small">ITP-1 · ITP-2</p>
+  <p><b>Misi:</b> tentukan setiap contoh termasuk data terstruktur atau tidak. Benar minimal 6 dari 8 untuk menuntaskan misi.</p>
+  <div id="p3Box"></div>
+  <p class="score" id="p3Score" aria-live="polite">Skor: 0 / 8</p>
+  <div class="btnrow"><button class="btn ghost small" type="button" id="p3Rst">Ulangi</button></div>
+</div>
+
+<!-- P4 -->
+<div class="card lab" id="lab4" data-lab="p4">
+  <div class="row"><div class="ttl"><span class="ibub o"><svg class="ic" aria-hidden="true"><use href="#i-list"/></svg></span><h2 style="margin:0">4 · Mesin list</h2></div><span class="pill ok donebadge">Selesai ✓</span></div>
+  <p class="small">ITP-3 · Akses, cari, tambah, hapus, sisip.</p>
+  <div class="fld"><label>Pilih contoh list<select id="lPre"><option value="belanja">Daftar belanja (tidak terurut)</option><option value="siswa">Daftar siswa (terurut A–Z)</option><option value="piket">Daftar piket (terurut A–Z)</option><option value="nilai">Daftar nilai (ada item kembar)</option><option value="kosong">List kosong</option></select></label></div>
+  <div class="lbox" id="lBox" aria-live="polite"></div>
+  <div class="status" id="lStat"><span><b>Panjang list:</b> <span id="lLen">0</span> item</span><span id="lOrd"></span><span id="lLast">Pilih operasi di bawah.</span></div>
+  <div class="fld"><label>Item<input id="lItem" class="w" type="text" maxlength="24" autocomplete="off" placeholder="mis. Lem"></label><label>Posisi ke-<input id="lPos" type="number" min="1" inputmode="numeric" placeholder="2"></label></div>
+  <div class="btnrow">
+    <button class="btn small" type="button" data-op="akses">Akses posisi</button>
+    <button class="btn small" type="button" data-op="cari">Cari item</button>
+    <button class="btn small" type="button" data-op="tambah">Tambah di akhir</button>
+    <button class="btn small" type="button" data-op="sisip">Sisip di posisi</button>
+    <button class="btn small" type="button" data-op="hapus">Hapus posisi</button>
+    <button class="btn small ghost" type="button" data-op="urut">Urutkan A–Z</button>
+  </div>
+  <label style="display:flex;gap:8px;align-items:center;min-height:42px"><input type="checkbox" id="lKeep" style="width:20px;height:20px"> <span>Jaga urutan A–Z saat “Tambah” (item masuk di posisi abjad yang tepat)</span></label>
+  <div class="msg" id="lMsg" role="status"></div>
+  <h3>Misi</h3>
+  <ul class="chal" id="lCh"></ul>
+  <div class="callout gold"><b class="h">Misi bonus</b>Mulai dari “Daftar belanja”. Ubah menjadi: Buku tulis, Gunting, Penggaris, Penghapus, Spidol, Lem (tambah Lem, hapus Pensil, sisip Gunting di posisi 2).</div>
+</div>
+
+<!-- P5 -->
+<div class="card lab" id="lab5" data-lab="p5">
+  <div class="row"><div class="ttl"><span class="ibub o"><svg class="ic" aria-hidden="true"><use href="#i-edit"/></svg></span><h2 style="margin:0">5 · Susun list dari kasus</h2></div><span class="pill ok donebadge">Selesai ✓</span></div>
+  <p class="small">ITP-4 · Lima langkah: pahami, kumpulkan, urutkan, beri nomor, periksa.</p>
+  <div class="seg" id="p5Seg" role="group" aria-label="Pilih kasus"><button type="button" data-k="piket" aria-pressed="true">Kasus A · Piket</button><button type="button" data-k="pustaka" aria-pressed="false">Kasus B · Perpustakaan</button><button type="button" data-k="bazar" aria-pressed="false">Kasus C · Bazar</button></div>
+  <div id="p5Box"></div>
+  <p class="small" id="p5Prog"></p>
+</div>
+
+<!-- P6 -->
+<div class="card lab" id="lab6" data-lab="p6">
+  <div class="row"><div class="ttl"><span class="ibub o"><svg class="ic" aria-hidden="true"><use href="#i-cart"/></svg></span><h2 style="margin:0">6 · Kasir kantin</h2></div><span class="pill ok donebadge">Selesai ✓</span></div>
+  <p class="small">ITP-2 · Dengan tabel, jawaban dicari tinggal membaca kolom.</p>
+  <p><b>Misi:</b> pilih nasi kuning, es teh, dan gorengan, lalu isi uang Rp15.000. Berapa kembaliannya?</p>
+  <div class="items" id="p6Items"></div>
+  <div class="fld"><label>Uang dibawa (Rp)<input id="p6Pay" type="text" inputmode="numeric" maxlength="7" placeholder="15000" autocomplete="off"></label></div>
+  <div class="stats" id="p6Stats"></div>
+  <div class="msg" id="p6Msg" role="status"></div>
+</div>
+</section>
+
+<!-- ================= LATIHAN ================= -->
+<section class="pane" id="p-latihan" hidden>
+<div class="card">
+  <div class="ttl"><span class="ibub"><svg class="ic" aria-hidden="true"><use href="#i-target"/></svg></span><h2 style="margin:0">Latihan pilihan ganda</h2></div>
+  <p class="small">Soal 1–6 dari rangkuman materi, soal 7–10 tambahan. Jawab semuanya; nilai ≥ 70 menuntaskan misi latihan.</p>
+  <div id="quizBox"></div>
+  <div id="quizRes" class="callout blue" hidden></div>
+  <div class="btnrow"><button class="btn ghost" type="button" id="quizRst">Ulangi kuis</button></div>
+</div>
+<div class="card">
+  <div class="ttl"><span class="ibub g"><svg class="ic" aria-hidden="true"><use href="#i-edit"/></svg></span><h2 style="margin:0">Soal uraian</h2></div>
+  <p class="small">Tulis jawabanmu dulu, baru buka kunci untuk memeriksa. Jawabanmu tersimpan di perangkat ini.</p>
+  <div class="q"><div class="qt">1. Jelaskan perbedaan data dan informasi dengan satu contoh.</div><textarea class="in-t" data-u="u1" placeholder="Tulis jawabanmu…"></textarea>
+    <details class="acc ans"><summary><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Kunci</summary><div class="body">Data = fakta mentah (80, 75, 90); informasi = hasil olah yang bermakna (rata-rata 80, tertinggi 90). Skor penuh bila ada contoh yang tepat.</div></details></div>
+  <div class="q"><div class="qt">2. Sebutkan tiga contoh himpunan data terstruktur bervolume kecil beserta kolom-kolomnya.</div><textarea class="in-t" data-u="u2" placeholder="Tulis jawabanmu…"></textarea>
+    <details class="acc ans"><summary><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Kunci</summary><div class="body">Contoh: daftar nilai (No, Nama, Kelas, Nilai); jadwal (Jam, Waktu, Mapel, Ruang); daftar harga (No, Barang, Harga). Jawaban lain yang sesuai diterima.</div></details></div>
+  <div class="q"><div class="qt">3. Daftar piket: Andi, Citra, Dewi, Fajar (terurut abjad). Eko hendak ditambahkan agar tetap terurut. Tulis list hasilnya dan jelaskan posisi sisipnya.</div><textarea class="in-t" data-u="u3" placeholder="Tulis jawabanmu…"></textarea>
+    <details class="acc ans"><summary><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Kunci</summary><div class="body">Andi, Citra, Dewi, Eko, Fajar. Eko disisipkan di posisi ke-4, setelah Dewi (D) dan sebelum Fajar (F) agar tetap terurut abjad.</div></details></div>
+</div>
+</section>
+
+<!-- ================= REFLEKSI ================= -->
+<section class="pane" id="p-refleksi" hidden>
+<div class="card">
+  <div class="ttl"><span class="ibub p"><svg class="ic" aria-hidden="true"><use href="#i-edit"/></svg></span><h2 style="margin:0">Refleksi</h2></div>
+  <div class="fld"><label>Nama<input id="rNama" class="w" type="text" maxlength="40" autocomplete="name"></label><label>Kelas<input id="rKelas" type="text" maxlength="8" style="width:90px" autocomplete="off"></label></div>
+  <div class="q"><div class="qt">1. Hal baru apa yang paling kupahami tentang data terstruktur dan list?</div><textarea class="in-t" data-r="r1"></textarea></div>
+  <div class="q"><div class="qt">2. Daftar apa di rumah atau sekolah yang bisa kujadikan list? Terurut atau tidak?</div><textarea class="in-t" data-r="r2"></textarea></div>
+  <div class="q"><div class="qt">3. Bagian mana yang masih membingungkan (misalnya indeks mulai dari 0)?</div><textarea class="in-t" data-r="r3"></textarea></div>
+  <div class="q"><div class="qt">4. Bagaimana pelajaran ini membantuku mengatur data sehari-hari?</div><textarea class="in-t" data-r="r4"></textarea></div>
+  <h3>Penilaian diri</h3>
+  <div class="rate" id="rateBox"></div>
+</div>
+<div class="card">
+  <h2>Ringkasan kemajuan</h2>
+  <div class="prog" id="progBox"></div>
+  <div class="btnrow">
+    <button class="btn" type="button" id="btnPrint"><svg class="ic" aria-hidden="true"><use href="#i-print"/></svg>Cetak / simpan PDF</button>
+    <button class="btn ghost" type="button" id="btnCopy">Salin ringkasan</button>
+    <button class="btn ghost" type="button" id="btnReset"><svg class="ic" aria-hidden="true"><use href="#i-refresh"/></svg>Hapus semua progres</button>
+  </div>
+  <p class="small">Data tersimpan hanya di browser perangkat ini. Untuk melaporkan ke guru, cetak atau simpan sebagai PDF, atau salin ringkasan.</p>
+</div>
+</section>
+
+<!-- ================= SUMBER ================= -->
+<section class="pane" id="p-sumber" hidden>
+<div class="card">
+  <div class="ttl"><span class="ibub"><svg class="ic" aria-hidden="true"><use href="#i-link"/></svg></span><h2 style="margin:0">Sumber belajar</h2></div>
+  <p>Utamakan tautan portal pemerintah. Buka dengan bimbingan guru atau orang tua.</p>
+  <div class="src">
+    <div class="it"><a href="https://buku.kemdikbud.go.id" target="_blank" rel="noopener">buku.kemdikbud.go.id</a><small>Buku Siswa Informatika Kelas VII (Kemendikbudristek, 2023): Bab 1.A.1.c hlm. 9 (list), Bab 2.A hlm. 40–45 (data), Bab 3.A hlm. 96 (data dan informasi).</small></div>
+    <div class="it"><a href="https://buku.kemdikbud.go.id/s/8nrsyh" target="_blank" rel="noopener">buku.kemdikbud.go.id/s/8nrsyh</a><small>Konten daring Aktivitas VII-BK-04-U (QR dalam buku): list “Kata Rahasia”.</small></div>
+    <div class="it"><a href="https://belajar.id" target="_blank" rel="noopener">belajar.id</a><small>Rumah Pendidikan, portal belajar Kemendikdasmen: video dan bahan ajar.</small></div>
+    <div class="it"><a href="https://bebras.or.id" target="_blank" rel="noopener">bebras.or.id</a><small>Bebras Indonesia: soal latihan berpikir komputasional untuk mengurutkan dan mengelompokkan data.</small></div>
+    <div class="it"><a href="https://www.csunplugged.org" target="_blank" rel="noopener">csunplugged.org</a><small>CS Unplugged: aktivitas tanpa komputer tentang data dan pengurutan (bahasa Inggris).</small></div>
+    <div class="it"><a href="https://www.khanacademy.org" target="_blank" rel="noopener">khanacademy.org</a><small>Khan Academy: pelajaran dasar data dan algoritma (bahasa Inggris, dengan subtitel).</small></div>
+    <div class="it"><a href="https://scratch.mit.edu" target="_blank" rel="noopener">scratch.mit.edu</a><small>Pengayaan: Scratch → kategori Variabel → Buat sebuah List, untuk mencoba list dengan blok.</small></div>
+  </div>
+  <div class="callout"><b class="h">Catatan</b>Tautan di atas adalah laman utama portal dan belum diuji langsung saat halaman ini disusun. Periksa dulu sebelum dibagikan. Ilustrasi, tabel, dan contoh data pada halaman ini adalah buatan sendiri, bukan salinan buku.</div>
+</div>
+</main>
+<footer><p>Disusun oleh Herman Jaya, S.Pd. · SMP Negeri 4 Rantau Panjang<br>Informatika Fase D · Kurikulum Merdeka</p></footer>
+</div>
+<button id="top" type="button" aria-label="Kembali ke atas"><svg class="ic" aria-hidden="true"><use href="#i-up"/></svg></button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+/* ---------- penyimpanan ringan (boleh gagal) ---------- */
+var KEY='bk2tp1.v1';
+var S={paham:{},done:{},chal:{},quiz:{},ur:{},refl:{},rate:{},name:'',kelas:'',fz:1,theme:''};
+try{var raw=localStorage.getItem(KEY);if(raw){var o=JSON.parse(raw);if(o&&typeof o==='object'){for(var k in S){if(o[k]!==undefined&&o[k]!==null)S[k]=o[k];}}}}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+function $(s,r){return (r||document).querySelector(s);}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function ic(n){return '<svg class="ic" aria-hidden="true"><use href="#i-'+n+'"/></svg>';}
+function dec(n){return (Math.round(n*10)/10).toString().replace('.',',');}
+function rp(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'.');}
+function norm(s){return String(s).toLowerCase().replace(/[^a-z0-9]/g,'');}
+var toastT;
+function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove('on');},2200);}
+function setMsg(el,txt,ok){el.textContent=txt;el.className='msg show'+(ok?' okk':'');}
+function hideMsg(el){el.className='msg';el.textContent='';}
+
+/* ---------- tema dan ukuran huruf ---------- */
+var FZ=[9,9.5,10.5,12,13.5];
+function applyFz(){var i=Math.max(0,Math.min(FZ.length-1,S.fz));S.fz=i;document.documentElement.style.setProperty('--fs',FZ[i]+'pt');$('#btnFz').textContent='Huruf '+String(FZ[i]).replace('.',',')+' pt';$('#btnF1').disabled=i===0;$('#btnF2').disabled=i===FZ.length-1;}
+$('#btnF1').addEventListener('click',function(){S.fz--;applyFz();save();});
+$('#btnF2').addEventListener('click',function(){S.fz++;applyFz();save();});
+function curTheme(){return S.theme||((window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');}
+function applyTheme(){var t=curTheme();document.documentElement.setAttribute('data-theme',t);$('#btnTheme').innerHTML=(t==='dark'?ic('sun')+'<span>Mode terang</span>':ic('moon')+'<span>Mode gelap</span>');}
+$('#btnTheme').addEventListener('click',function(){S.theme=curTheme()==='dark'?'light':'dark';applyTheme();save();});
+
+/* ---------- tab (hash) ---------- */
+var TABS=['materi','praktik','latihan','refleksi','sumber'];
+function showTab(opts){
+  var h=(location.hash||'').replace('#',''),tab=null,target=null;
+  if(TABS.indexOf(h)>=0)tab=h;
+  else if(h){target=document.getElementById(h);var p=target&&target.closest('section.pane');if(p)tab=p.id.slice(2);}
+  if(!tab)tab=$('#tabs a[aria-current]')?$('#tabs a[aria-current]').dataset.t:'materi';
+  TABS.forEach(function(t){var p=$('#p-'+t);if(p)p.hidden=(t!==tab);});
+  $$('#tabs a').forEach(function(a){if(a.dataset.t===tab){a.setAttribute('aria-current','page');try{a.scrollIntoView({inline:'center',block:'nearest'});}catch(e){}}else a.removeAttribute('aria-current');});
+  if(tab==='refleksi')paintProg();
+  if(target){target.scrollIntoView();window.scrollBy(0,-56);}
+  else if(!opts||!opts.init){var n=$('nav.tabs');window.scrollTo(0,Math.max(0,n.offsetTop));}
+}
+window.addEventListener('hashchange',function(){showTab();});
+
+/* ---------- progres ---------- */
+var LABS=['p1','p2','p3','p4','p5','p6'];
+function cnt(o){var n=0;for(var k in o)if(o[k])n++;return n;}
+function quizScore(){var s=0,a=0;for(var i=0;i<Q.length;i++){if(S.quiz[i]!==undefined){a++;if(S.quiz[i]===Q[i].a)s++;}}return {s:s,a:a};}
+function quizPass(){var r=quizScore();return r.a===Q.length&&r.s>=7;}
+function reflCount(){var n=0;['r1','r2','r3','r4'].forEach(function(k){if((S.refl[k]||'').trim().length>=5)n++;});return n;}
+function total(){var l=0;LABS.forEach(function(k){if(S.done[k])l++;});return {p:cnt(S.paham),l:l,q:quizPass()?1:0,r:reflCount()>=3?1:0};}
+function paintProg(){
+  var t=total(),sum=t.p+t.l+t.q+t.r;
+  $('#hpTxt').textContent=sum+' / 12';$('#hpBar').style.width=(sum/12*100)+'%';
+  $$('[data-pm]').forEach(function(c){c.textContent=S.paham[c.dataset.pm]?'✔':'☐';});
+  $('#lpBar').style.width=(t.l/6*100)+'%';$('#lpTxt').textContent=t.l+' dari 6 kegiatan selesai';
+  $$('[data-lab]').forEach(function(c){c.classList.toggle('isdone',!!S.done[c.dataset.lab]);});
+  var qs=quizScore(),box=$('#progBox');
+  if(box){
+    var rows=[['Materi dipahami',t.p,4,t.p+' / 4'],['Ruang praktik',t.l,6,t.l+' / 6'],['Latihan pilihan ganda',qs.s,10,qs.a?qs.s+' / 10':'belum'],['Refleksi terisi',reflCount(),4,reflCount()+' / 4']];
+    box.innerHTML=rows.map(function(r){return '<div class="r"><span>'+r[0]+'</span><div class="bar"><i style="width:'+(r[1]/r[2]*100)+'%"></i></div><b>'+r[3]+'</b></div>';}).join('');
+  }
+  if(sum===12&&!paintProg.said){paintProg.said=1;toast('Hebat! Semua langkah selesai 🎉');}
+}
+function markDone(id){if(S.done[id])return;S.done[id]=1;save();paintProg();toast('Kegiatan praktik selesai ✓');}
+
+/* ---------- misi (checklist) ---------- */
+var LABCH={p2:['p2_sort','p2_fil','p2_add','p2_err'],p4:['p4_akses','p4_cari','p4_tambah','p4_hapus','p4_sisip','p4_urut']};
+function chalHTML(items){return items.map(function(it){return '<li data-c="'+it[0]+'"'+(it[2]?' class="bonus"':'')+'><span class="ck">'+ic('check')+'</span><span class="tx">'+it[1]+'</span></li>';}).join('');}
+function paintChal(){$$('.chal li[data-c]').forEach(function(li){li.classList.toggle('done',!!S.chal[li.dataset.c]);});}
+function tick(id){
+  if(S.chal[id])return;S.chal[id]=1;save();paintChal();
+  for(var lab in LABCH){if(LABCH[lab].indexOf(id)>=0){var all=LABCH[lab].every(function(x){return S.chal[x];});if(all)markDone(lab);}}
+  if(id==='p4_bonus')toast('Misi bonus selesai ★');
+}
+
+/* ---------- materi ---------- */
+$$('[data-paham]').forEach(function(b){
+  var k=b.dataset.paham;
+  function paint(){var on=!!S.paham[k];b.setAttribute('aria-pressed',on?'true':'false');b.textContent=on?'Sudah paham ✓':'Saya paham';}
+  paint();
+  b.addEventListener('click',function(){S.paham[k]=!S.paham[k];save();paint();paintProg();});
+});
+$('#accOpen').addEventListener('click',function(){$$('#p-materi details.acc').forEach(function(d){d.open=true;});});
+$('#accClose').addEventListener('click',function(){$$('#p-materi details.acc').forEach(function(d){d.open=false;});});
+$('#dIbtn').addEventListener('click',function(){var i=$('#dInfo');var on=!i.classList.contains('show');i.classList.toggle('show',on);this.textContent=on?'Sembunyikan':'Olah data';});
+
+/* anatomi tabel */
+(function(){
+  var rows=[['No','Nama','Kelas','Nilai'],['1','Ali','VII-A','80'],['2','Budi','VII-A','75'],['3','Citra','VII-B','90']];
+  var tb=$('#anatTbl tbody');
+  tb.innerHTML=rows.map(function(r,i){return '<tr>'+r.map(function(c,j){return (i?'<td':'<th')+' data-r="'+i+'" data-c="'+j+'">'+c+(i?'</td>':'</th>');}).join('')+'</tr>';}).join('');
+  var TX={baris:['Baris (record)','Satu data lengkap tentang satu objek. Baris Budi: 2 · Budi · VII-A · 75.'],kolom:['Kolom (field)','Satu jenis data untuk semua objek. Kolom “Nilai”: 80, 75, 90.'],label:['Judul kolom (label)','Nama yang menjelaskan isi kolom: No, Nama, Kelas, Nilai.'],sel:['Sel','Pertemuan satu baris dan satu kolom (satu nilai). Nilai Budi = 75.']};
+  $$('#anatSeg button').forEach(function(b){b.addEventListener('click',function(){
+    var a=b.dataset.a;$$('#anatSeg button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+    $$('#anatTbl [data-r]').forEach(function(c){var r=+c.dataset.r,cc=+c.dataset.c,on=false;
+      if(a==='baris')on=r===2;else if(a==='kolom')on=cc===3;else if(a==='label')on=r===0;else on=(r===2&&cc===3);
+      c.classList.toggle('hl',on);});
+    $('#anatTxt').innerHTML='<b class="h">'+TX[a][0]+'</b>'+TX[a][1];
+  });});
+})();
+
+/* contoh data ITP-2 */
+(function(){
+  var EX={
+    nilai:{h:['No','Nama','Kelas','Nilai'],n:[3],r:[['1','Ali','VII-A','80'],['2','Budi','VII-A','75'],['3','Citra','VII-B','90'],['4','Dina','VII-B','85'],['5','Eko','VII-B','70']],cap:'Kolom: No, Nama, Kelas, Nilai. Dipakai untuk mencari nilai tertinggi, rata-rata, dan peringkat.'},
+    jadwal:{h:['Jam ke-','Waktu','Mata pelajaran','Ruang'],n:[],r:[['1–2','07.00–08.20','Matematika','VII-A'],['3–4','08.20–09.40','Informatika','Lab Komputer'],['5','10.00–10.40','Bahasa Indonesia','VII-A'],['6','10.40–11.20','IPA','Lab IPA']],cap:'Jadwal hari Senin (data contoh). Kolom menyimpan jenis data yang sama; baris menyimpan satu sesi pelajaran.'},
+    harga:{h:['No','Nama barang','Harga (Rp)'],n:[2],r:[['1','Nasi kuning','5.000'],['2','Es teh','3.000'],['3','Gorengan','2.000'],['4','Air mineral','3.000'],['5','Roti','4.000']],cap:'Kolom Harga hanya berisi angka sehingga mudah dijumlahkan dan dibandingkan.'},
+    hadir:{h:['No','Nama','Keterangan (10 November)'],n:[],r:[['1','Ali','Hadir'],['2','Budi','Sakit'],['3','Citra','Hadir'],['4','Dina','Izin'],['5','Eko','Hadir']],cap:'Dari tabel ini wali kelas dapat menghitung rekap kehadiran: 3 hadir, 1 sakit, 1 izin.'}
+  };
+  function show(k){var d=EX[k];$('#exTbl').innerHTML='<tr>'+d.h.map(function(x,i){return '<th'+(d.n.indexOf(i)>=0?' class="n"':'')+'>'+x+'</th>';}).join('')+'</tr>'+d.r.map(function(r){return '<tr>'+r.map(function(x,i){return '<td'+(d.n.indexOf(i)>=0?' class="n"':'')+'>'+x+'</td>';}).join('')+'</tr>';}).join('');$('#exCap').textContent=d.cap;$$('#exSeg button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.e===k?'true':'false');});}
+  $$('#exSeg button').forEach(function(b){b.addEventListener('click',function(){show(b.dataset.e);});});
+  show('nilai');
+})();
+
+/* kotak list umum */
+function boxHTML(items,o){
+  o=o||{};
+  if(!items.length)return '<div class="emptylist">List kosong (0 item)</div>';
+  return items.map(function(v,i){
+    var cls='li'+(o.cls&&o.cls[i]?' '+o.cls[i]:'');
+    return '<div class="'+cls+'" data-i="'+i+'"'+(o.click?' tabindex="0" role="button" style="cursor:pointer" aria-label="Item '+esc(v)+', posisi '+(i+1)+', indeks '+i+'"':'')+'><div class="v">'+esc(v)+'</div><div class="p">posisi '+(i+1)+'</div>'+(o.noidx?'':'<div class="x">indeks '+i+'</div>')+'</div>';
+  }).join('');
+}
+/* posisi dan indeks */
+(function(){
+  var items=['Buku tulis','Pensil','Penggaris','Penghapus','Spidol'],showIdx=true,sel=-1;
+  function draw(){var cls=[];if(sel>=0)cls[sel]='act hl';$('#pxBox').innerHTML=boxHTML(items,{click:true,noidx:!showIdx,cls:cls});}
+  function pick(i){sel=i;draw();$('#pxTxt').innerHTML='<b class="h">Item ke-'+(i+1)+' = '+esc(items[i])+'</b>Posisi '+(i+1)+(showIdx?', indeks '+i+' (posisi − 1)':'')+'.';}
+  $('#pxBox').addEventListener('click',function(e){var b=e.target.closest('.li');if(b)pick(+b.dataset.i);});
+  $('#pxBox').addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){var b=e.target.closest('.li');if(b){e.preventDefault();pick(+b.dataset.i);var n=$('#pxBox .li[data-i="'+b.dataset.i+'"]');if(n)n.focus();}}});
+  $('#pxBtn').addEventListener('click',function(){showIdx=!showIdx;this.setAttribute('aria-pressed',showIdx?'true':'false');this.textContent='Indeks: '+(showIdx?'tampil':'sembunyi');draw();if(sel>=0)pick(sel);});
+  draw();
+})();
+
+/* kartu hafalan */
+(function(){
+  var FC=[['Data','Fakta mentah berupa angka, kata, gambar, atau suara.','Contoh: 80, “Budi”'],['Informasi','Data yang sudah diolah sehingga bermakna.','Contoh: rata-rata kelas 80'],['Struktur data','Cara menyimpan dan mengatur data agar dapat diakses dan diolah dengan tepat.','Contoh: tabel, list'],['Himpunan data terstruktur','Data yang ditata dengan aturan tertentu, umumnya tabel baris dan kolom.','Contoh: daftar nilai, jadwal'],['Baris','Satu data lengkap tentang satu objek dalam tabel.','Contoh: baris Budi'],['Kolom (field)','Satu jenis data untuk semua objek dan punya judul.','Contoh: kolom Nilai'],['Sel','Pertemuan satu baris dan satu kolom (satu nilai).','Contoh: nilai Budi = 75'],['List (daftar)','Kumpulan item berurutan yang diakses lewat posisi/indeks.','Contoh: daftar belanja'],['Indeks','Nomor yang menunjukkan letak item dalam list. Posisi ke-n berindeks n − 1.','Contoh: posisi 1 = indeks 0'],['List terurut','List yang itemnya mengikuti aturan urutan (abjad, kecil ke besar).','Contoh: daftar siswa A–Z']];
+  var i=0,card=$('#fcard');
+  function draw(){card.classList.remove('flip');$('#fcTerm').textContent=FC[i][0];$('#fcDef').textContent=FC[i][1];$('#fcEx').textContent=FC[i][2];$('#fcNum').textContent=(i+1)+' / '+FC.length;}
+  card.addEventListener('click',function(){card.classList.toggle('flip');});
+  card.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();card.classList.toggle('flip');}});
+  $('#fcPrev').addEventListener('click',function(){i=(i+FC.length-1)%FC.length;draw();});
+  $('#fcNext').addEventListener('click',function(){i=(i+1)%FC.length;draw();});
+  $('#fcRand').addEventListener('click',function(){var j;do{j=Math.floor(Math.random()*FC.length);}while(j===i&&FC.length>1);i=j;draw();});
+  draw();
+})();
+
+/* glosarium */
+$('#gSearch').addEventListener('input',function(){
+  var q=this.value.trim().toLowerCase(),n=0;
+  $$('#gTbl tr').forEach(function(r,i){if(!i)return;var m=!q||r.textContent.toLowerCase().indexOf(q)>=0;r.style.display=m?'':'none';if(m)n++;});
+  $('#gEmpty').style.display=n?'none':'block';
+});
+
+/* =====================================================
+   PRAKTIK 1 · tata catatan menjadi tabel
+   ===================================================== */
+(function(){
+  var D=[['Ali','VII-A','80'],['Budi','VII-A','75'],['Citra','VII-B','90'],['Dina','VII-B','85'],['Eko','VII-B','70']];
+  var tb=$('#p1Tbl'),HD=['Nama','Kelas','Nilai'];
+  function build(){
+    tb.innerHTML='<tr><th>No</th><th>Nama</th><th>Kelas</th><th>Nilai</th></tr>'+D.map(function(r,i){return '<tr><td class="no">'+(i+1)+'</td>'+r.map(function(_,c){return '<td><input class="tin" data-r="'+i+'" data-c="'+c+'" type="text" maxlength="12" autocomplete="off" autocapitalize="off" spellcheck="false"'+(c===2?' inputmode="numeric"':'')+' aria-label="'+HD[c]+' baris '+(i+1)+'"></td>';}).join('')+'</tr>';}).join('');
+    hideMsg($('#p1Msg'));$('#p1Stats').hidden=true;
+  }
+  function stats(){
+    var v=D.map(function(r){return +r[2];}),sum=v.reduce(function(a,b){return a+b;},0),avg=sum/v.length,mx=Math.max.apply(null,v),mn=Math.min.apply(null,v);
+    var who=function(x){return D[v.indexOf(x)][0];},above=v.filter(function(x){return x>avg;}).length;
+    var s=$('#p1Stats');s.hidden=false;
+    s.innerHTML='<div class="stat"><small>Rata-rata</small><b>'+dec(avg)+'</b></div><div class="stat"><small>Tertinggi</small><b>'+mx+' ('+who(mx)+')</b></div><div class="stat"><small>Terendah</small><b>'+mn+' ('+who(mn)+')</b></div><div class="stat"><small>Di atas rata-rata</small><b>'+above+' murid</b></div>';
+  }
+  $('#p1Chk').addEventListener('click',function(){
+    var ok=0,empty=0,ins=$$('#p1Tbl .tin');
+    ins.forEach(function(i){var v=i.value.trim();i.classList.remove('ok','no');if(!v){empty++;return;}if(norm(v)===norm(D[+i.dataset.r][+i.dataset.c])){ok++;i.classList.add('ok');}else i.classList.add('no');});
+    var m=$('#p1Msg');
+    if(ok===ins.length){setMsg(m,'Semua sel benar! Lihat: setelah tertata, rata-rata dan nilai tertinggi langsung terbaca.',true);stats();markDone('p1');}
+    else if(empty)setMsg(m,ok+' sel benar. Masih ada '+empty+' sel kosong. Isi semuanya dari catatan.');
+    else setMsg(m,ok+' dari '+ins.length+' sel benar. Periksa sel yang berwarna merah (ejaan atau angka).');
+  });
+  $('#p1Show').addEventListener('click',function(){$$('#p1Tbl .tin').forEach(function(i){i.value=D[+i.dataset.r][+i.dataset.c];i.classList.remove('no');i.classList.add('ok');});setMsg($('#p1Msg'),'Jawaban ditampilkan. Tekan Periksa untuk melihat statistiknya.',true);});
+  $('#p1Rst').addEventListener('click',build);
+  build();
+})();
+
+/* =====================================================
+   PRAKTIK 2 · tabel nilai hidup
+   ===================================================== */
+(function(){
+  var INIT=[['Ali','VII-A',80],['Budi','VII-A',75],['Citra','VII-B',90],['Dina','VII-B',85],['Eko','VII-B',70]];
+  var rows,nextId,sk=null,dir=1,fil='';
+  function reset(){rows=INIT.map(function(r,i){return {id:i+1,n:r[0],k:r[1],v:r[2]};});nextId=INIT.length+1;sk=null;dir=1;fil='';$('#p2Fil').value='';}
+  $('#p2Ch').innerHTML=chalHTML([['p2_sort','Urutkan kolom <b>Nilai</b> dari terbesar ke terkecil (ketuk judul sampai muncul ▼).'],['p2_fil','Saring hanya kelas <b>VII-B</b>.'],['p2_add','Tambahkan satu data baru yang benar.'],['p2_err','Coba isi Nilai dengan huruf (mis. “sembilan puluh”) dan lihat tabel menolaknya.']]);
+  function view(){
+    var a=rows.filter(function(r){return !fil||r.k===fil;});
+    if(sk){a=a.slice().sort(function(x,y){var p=x[sk],q=y[sk];if(typeof p==='string')return p.localeCompare(q,'id')*dir;return (p-q)*dir;});}
+    return a;
+  }
+  function draw(){
+    var a=view(),t=$('#p2Tbl');
+    function th(k,l,c){return '<th data-k="'+k+'"'+(sk===k?' data-s="'+(dir>0?'asc':'desc')+'"':'')+(c?' class="'+c+'"':'')+' tabindex="0" role="button" aria-label="Urutkan menurut '+l+'">'+l+'</th>';}
+    t.innerHTML='<tr>'+th('id','No')+th('n','Nama')+th('k','Kelas')+th('v','Nilai','n')+'<th class="nosort" aria-label="Hapus"></th></tr>'+(a.length?a.map(function(r){return '<tr><td>'+r.id+'</td><td>'+esc(r.n)+'</td><td>'+r.k+'</td><td class="n">'+dec(r.v)+'</td><td><button class="xbtn" type="button" data-del="'+r.id+'" aria-label="Hapus '+esc(r.n)+'">×</button></td></tr>';}).join(''):'<tr><td colspan="5" class="small">Tidak ada data pada kelas ini.</td></tr>');
+    var s=$('#p2Stats');
+    if(!a.length){s.innerHTML='';}
+    else{var v=a.map(function(r){return r.v;}),sum=v.reduce(function(x,y){return x+y;},0),avg=sum/v.length,mx=Math.max.apply(null,v),mn=Math.min.apply(null,v);
+      var w=function(x){for(var i=0;i<a.length;i++)if(a[i].v===x)return a[i].n;};
+      s.innerHTML='<div class="stat"><small>Jumlah data</small><b>'+a.length+'</b></div><div class="stat"><small>Rata-rata</small><b>'+dec(avg)+'</b></div><div class="stat"><small>Tertinggi</small><b>'+dec(mx)+' ('+esc(w(mx))+')</b></div><div class="stat"><small>Terendah</small><b>'+dec(mn)+' ('+esc(w(mn))+')</b></div><div class="stat"><small>Di atas rata-rata</small><b>'+v.filter(function(x){return x>avg;}).length+' murid</b></div>';}
+    if(sk==='v'&&dir<0)tick('p2_sort');
+    if(fil==='VII-B'&&a.length)tick('p2_fil');
+  }
+  function sortBy(k){if(k==='id'){sk=null;dir=1;}else if(sk===k)dir=-dir;else{sk=k;dir=1;}draw();}
+  $('#p2Tbl').addEventListener('click',function(e){
+    var d=e.target.closest('[data-del]');if(d){rows=rows.filter(function(r){return r.id!==+d.dataset.del;});draw();return;}
+    var h=e.target.closest('th[data-k]');if(h)sortBy(h.dataset.k);});
+  $('#p2Tbl').addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){var h=e.target.closest('th[data-k]');if(h){e.preventDefault();sortBy(h.dataset.k);}}});
+  $('#p2Fil').addEventListener('change',function(){fil=this.value;draw();});
+  $('#p2Add').addEventListener('click',function(){
+    var m=$('#p2Msg'),n=$('#p2Nm').value.trim(),k=$('#p2Kl').value,v=$('#p2Nl').value.trim().replace(',','.');
+    if(!n){setMsg(m,'Kolom Nama belum diisi.');return;}
+    if(/^[\d\s.,]+$/.test(n)){setMsg(m,'Kolom Nama berisi teks, bukan angka. Satu kolom hanya berisi satu jenis data.');tick('p2_err');return;}
+    if(!/^\d{1,3}(\.\d)?$/.test(v)||+v>100){setMsg(m,'Kolom Nilai hanya boleh berisi angka 0–100. Satu kolom hanya berisi satu jenis data, sehingga tulisan seperti “sembilan puluh” ditolak.');tick('p2_err');return;}
+    if(rows.length>=12){setMsg(m,'Tabel latihan maksimal 12 baris. Hapus satu baris dulu.');return;}
+    rows.push({id:nextId++,n:n,k:k,v:+v});$('#p2Nm').value='';$('#p2Nl').value='';
+    setMsg(m,'Data “'+n+'” ditambahkan. Statistik di atas ikut berubah otomatis.',true);tick('p2_add');draw();
+  });
+  $('#p2Rst').addEventListener('click',function(){reset();hideMsg($('#p2Msg'));draw();});
+  reset();draw();
+})();
+
+/* =====================================================
+   PRAKTIK 3 · detektif data
+   ===================================================== */
+(function(){
+  var D=[['Daftar nilai satu kelas',1,'Tersusun dalam baris dan kolom berlabel.'],['Rekaman suara pidato',0,'Berupa suara; tidak berbaris-berkolom dan tidak berlabel.'],['Jadwal pelajaran',1,'Baris = jam, kolom = hari atau mapel; tertata pasti.'],['Foto kegiatan Pramuka',0,'Berupa gambar; tidak punya aturan baris dan kolom.'],['Daftar harga kantin',1,'Kolom Nama dan Harga berlabel, jenis data seragam.'],['Status panjang di media sosial',0,'Teks bebas tanpa pola baku.'],['Daftar hadir harian',1,'Baris tiap murid, kolom keterangan hadir.'],['Paragraf cerita tentang acara kelas',0,'Data tercampur dalam kalimat, sulit dicari dan dihitung.']];
+  var ans;
+  function build(){
+    ans={};
+    $('#p3Box').innerHTML=D.map(function(d,i){return '<div class="dq" data-i="'+i+'"><div class="tx">'+(i+1)+'. '+d[0]+'</div><div class="bt"><button class="btn ghost small" type="button" data-a="1">Terstruktur</button><button class="btn ghost small" type="button" data-a="0">Tidak terstruktur</button></div><div class="why"></div></div>';}).join('');
+    score();
+  }
+  function score(){var s=0,n=0;for(var i in ans){n++;if(ans[i]===D[i][1])s++;}$('#p3Score').textContent='Skor: '+s+' / 8 · terjawab '+n;return {s:s,n:n};}
+  $('#p3Box').addEventListener('click',function(e){
+    var b=e.target.closest('button[data-a]');if(!b)return;var q=b.closest('.dq'),i=+q.dataset.i;if(ans[i]!==undefined)return;
+    ans[i]=+b.dataset.a;var ok=ans[i]===D[i][1];q.classList.add(ok?'ok':'no');
+    $$('button',q).forEach(function(x){x.disabled=true;});
+    $('.why',q).innerHTML=(ok?'<b>Tepat.</b> ':'<b>Belum tepat.</b> Jawaban benar: '+(D[i][1]?'terstruktur':'tidak terstruktur')+'. ')+D[i][2];
+    var r=score();if(r.n===D.length){if(r.s>=6){markDone('p3');}else toast('Coba ulangi dan baca alasannya.');}
+  });
+  $('#p3Rst').addEventListener('click',build);
+  build();
+})();
+
+/* =====================================================
+   PRAKTIK 4 · mesin list
+   ===================================================== */
+(function(){
+  var PRE={belanja:['Buku tulis','Pensil','Penggaris','Penghapus','Spidol'],siswa:['Ali','Budi','Citra','Dina','Eko'],piket:['Andi','Bagas','Citra','Dewi','Fajar','Gita'],nilai:['80','75','90','80'],kosong:[]};
+  var TARGET=['Buku tulis','Gunting','Penggaris','Penghapus','Spidol','Lem'];
+  var L=[],hl={};
+  function isNum(x){return /^\d+([.,]\d+)?$/.test(x);}
+  function cmp(a,b){if(isNum(a)&&isNum(b))return parseFloat(a.replace(',','.'))-parseFloat(b.replace(',','.'));if(isNum(a))return -1;if(isNum(b))return 1;return a.toLowerCase().localeCompare(b.toLowerCase(),'id');}
+  function sorted(a){for(var i=1;i<a.length;i++)if(cmp(a[i-1],a[i])>0)return false;return true;}
+  $('#lCh').innerHTML=chalHTML([['p4_akses','<b>Akses</b>: ambil item pada posisi tertentu.'],['p4_cari','<b>Cari</b>: temukan posisi sebuah item.'],['p4_tambah','<b>Tambah</b>: masukkan item baru di akhir.'],['p4_hapus','<b>Hapus</b>: buang satu item dan lihat item sesudahnya bergeser maju.'],['p4_sisip','<b>Sisip</b>: masukkan item di posisi tertentu.'],['p4_urut','<b>Urutkan</b>: ubah list tak terurut menjadi terurut A–Z.'],['p4_bonus','Misi bonus: capai list target (lihat kotak kuning).',1]]);
+  function draw(msg){
+    var cls=[];for(var i in hl)cls[i]=hl[i];
+    $('#lBox').innerHTML=boxHTML(L,{cls:cls});
+    $('#lLen').textContent=L.length;
+    $('#lOrd').innerHTML=L.length<2?'<b>Urutan:</b> —':(sorted(L)?'<b>Urutan:</b> terurut ✓ (A–Z / kecil ke besar)':'<b>Urutan:</b> tidak terurut');
+    if(msg!==undefined)$('#lLast').innerHTML=msg;
+    if(L.length===TARGET.length&&L.every(function(x,i){return x===TARGET[i];}))tick('p4_bonus');
+  }
+  function err(t){setMsg($('#lMsg'),t);}
+  function load(k){L=PRE[k].slice();hl={};hideMsg($('#lMsg'));draw('Pilih operasi di bawah.');}
+  function posIn(max){var p=parseInt($('#lPos').value,10);if(!(p>=1&&p<=max)){err(max<1?'List masih kosong.':'Isi “Posisi ke-” dengan angka 1 sampai '+max+'.');return 0;}return p;}
+  function itemIn(){var v=$('#lItem').value.trim();if(!v){err('Isi kolom “Item” dulu.');return '';}return v;}
+  var OPS={
+    akses:function(){var p=posIn(L.length);if(!p)return;hl={};hl[p-1]='hl';draw('<b>Akses</b> posisi ke-'+p+' → <b>'+esc(L[p-1])+'</b> (indeks '+(p-1)+')');tick('p4_akses');},
+    cari:function(){var v=itemIn();if(!v)return;var f=[];L.forEach(function(x,i){if(x.toLowerCase()===v.toLowerCase())f.push(i);});hl={};if(!f.length){draw('<b>Cari</b> “'+esc(v)+'” → tidak ditemukan di list ini.');return;}f.forEach(function(i){hl[i]='found';});draw('<b>Cari</b> “'+esc(v)+'” → ditemukan di posisi ke-'+(f[0]+1)+' (indeks '+f[0]+')'+(f.length>1?'; muncul lagi di posisi '+f.slice(1).map(function(i){return i+1;}).join(', ')+'.':'.'));tick('p4_cari');},
+    tambah:function(){var v=itemIn();if(!v)return;if(L.length>=12){err('Mesin list dibatasi 12 item.');return;}
+      var at=L.length;if($('#lKeep').checked&&sorted(L)){at=0;while(at<L.length&&cmp(L[at],v)<=0)at++;}
+      L.splice(at,0,v);hl={};hl[at]='new';draw('<b>Tambah</b> “'+esc(v)+'” di posisi ke-'+(at+1)+(at<L.length-1?' (sesuai urutan abjad)':' (di akhir)')+'. Panjang list menjadi '+L.length+'.');tick('p4_tambah');},
+    sisip:function(){var v=itemIn();if(!v)return;if(L.length>=12){err('Mesin list dibatasi 12 item.');return;}var p=posIn(L.length+1);if(!p)return;
+      var was=sorted(L);L.splice(p-1,0,v);hl={};hl[p-1]='new';
+      draw('<b>Sisip</b> “'+esc(v)+'” di posisi ke-'+p+'; item sesudahnya bergeser mundur. Panjang list menjadi '+L.length+'.'+(was&&!sorted(L)?' <b>Perhatian:</b> list tidak lagi terurut. Pilih posisi yang sesuai abjad.':''));tick('p4_sisip');},
+    hapus:function(){var p=posIn(L.length);if(!p)return;var x=L.splice(p-1,1)[0];hl={};draw('<b>Hapus</b> “'+esc(x)+'” (posisi ke-'+p+'); item sesudahnya bergeser maju. Panjang list menjadi '+L.length+'.');tick('p4_hapus');},
+    urut:function(){if(L.length<2){err('Butuh minimal 2 item untuk diurutkan.');return;}var was=sorted(L);L.sort(cmp);hl={};L.forEach(function(_,i){hl[i]='hl';});draw(was?'<b>Urutkan</b>: list sudah terurut, tidak ada yang berubah.':'<b>Urutkan</b>: list kini terurut A–Z / kecil ke besar.');if(!was)tick('p4_urut');}
+  };
+  $$('[data-op]').forEach(function(b){b.addEventListener('click',function(){hideMsg($('#lMsg'));OPS[b.dataset.op]();});});
+  $('#lItem').addEventListener('keydown',function(e){if(e.key==='Enter'){hideMsg($('#lMsg'));OPS.tambah();}});
+  $('#lPre').addEventListener('change',function(){load(this.value);});
+  paintChal();load('belanja');
+})();
+
+/* =====================================================
+   PRAKTIK 5 · susun list dari kasus
+   ===================================================== */
+(function(){
+  var C={
+    piket:{t:'Kasus A · Daftar piket Senin',s:'Wali kelas meminta daftar petugas piket Senin dalam <b>urutan abjad</b>. Petugas: Dina, Ali, Eko, Citra, Budi.',init:['Dina','Ali','Eko','Citra','Budi'],ans:['Ali','Budi','Citra','Dina','Eko'],q:'Siapa yang berada di posisi ke-4?',qa:'dina',hint:'Hitung dari atas: Ali (1), Budi (2), …'},
+    pustaka:{t:'Kasus B · Perpustakaan kelas',s:'Rak mini kelas VII-B berisi 6 buku. Ketua kelas ingin <b>daftar terurut abjad</b> agar judul mudah dicari.',init:['Laskar Pelangi','Bumi','Atlas Dunia','Kamus Bahasa Indonesia','Ensiklopedia Sains','Dongeng Nusantara'],ans:['Atlas Dunia','Bumi','Dongeng Nusantara','Ensiklopedia Sains','Kamus Bahasa Indonesia','Laskar Pelangi'],q:'Buku “Cerita Rakyat” ditambahkan dan daftar tetap terurut. Di posisi ke-berapa ia disisipkan?',qa:'3',hint:'Huruf C berada sesudah Bumi (B) dan sebelum Dongeng (D).'}
+  };
+  var BZ={pool:['semangka','melon','sirup','gula','gelas plastik','sepatu','buku gambar'],need:['semangka','melon','sirup','gula','gelas plastik']};
+  var cur='piket',st={};
+  function init(){st={piket:{arr:C.piket.init.slice(),stage:0},pustaka:{arr:C.pustaka.init.slice(),stage:0},bazar:{sel:{},jenis:'',stage:0}};}
+  function passed(k){return !!S.chal['p5_'+k];}
+  function pass(k){if(!S.chal['p5_'+k]){S.chal['p5_'+k]=1;save();}if(['piket','pustaka','bazar'].every(passed))markDone('p5');paintSeg();}
+  function paintSeg(){$$('#p5Seg button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.k===cur?'true':'false');b.textContent=b.textContent.replace(' ✓','')+(passed(b.dataset.k)?' ✓':'');});
+    var n=['piket','pustaka','bazar'].filter(passed).length;$('#p5Prog').textContent=n+' dari 3 kasus selesai.';}
+  function draw(){
+    var h='',k=cur;
+    if(k==='bazar'){
+      var s=st.bazar,all=BZ.pool;
+      h='<p>Kelas VII-A menjual es buah di bazar. Ketua kelas perlu <b>daftar bahan yang harus dibeli</b>. Pilih bahan yang diperlukan (ada yang tidak perlu), lalu tentukan jenis list.</p>'+
+        '<div class="pool" role="group" aria-label="Pilih bahan">'+all.map(function(x){return '<button type="button" data-p="'+x+'" aria-pressed="'+(s.sel[x]?'true':'false')+'">'+x+'</button>';}).join('')+'</div>'+
+        '<div class="seg" role="group" aria-label="Jenis list"><button type="button" data-j="terurut" aria-pressed="'+(s.jenis==='terurut')+'">Terurut</button><button type="button" data-j="tidak" aria-pressed="'+(s.jenis==='tidak')+'">Tidak terurut</button></div>'+
+        '<div class="btnrow"><button class="btn" type="button" data-chk="bazar">Periksa</button><button class="btn ghost" type="button" data-rst="bazar">Ulangi</button></div><div class="msg" id="p5Msg" role="status"></div>';
+      if(s.stage>=1){h+='<div class="lbox">'+boxHTML(BZ.need)+'</div><p><b>Periksa:</b> ternyata lupa <b>sendok</b>. Setelah “sendok” ditambah di akhir, berapa panjang list sekarang?</p><div class="fld"><label>Panjang list<input id="p5Ans" type="text" inputmode="numeric" maxlength="3" style="width:90px"></label><button class="btn" type="button" data-ans="bazar">Jawab</button></div><div class="msg" id="p5Msg2" role="status"></div>';}
+    } else {
+      var c=C[k],a=st[k].arr;
+      h='<p>'+c.s+'</p><p class="small">Ketuk ▲ ▼ untuk memindahkan item sampai urutannya benar.</p>'+
+        a.map(function(x,i){return '<div class="ar"><span class="no">'+(i+1)+'</span><span class="nm">'+esc(x)+'</span><button type="button" data-mv="'+i+'" data-d="-1" aria-label="Naik">▲</button><button type="button" data-mv="'+i+'" data-d="1" aria-label="Turun">▼</button></div>';}).join('')+
+        '<div class="btnrow"><button class="btn" type="button" data-chk="'+k+'">Periksa urutan</button><button class="btn ghost" type="button" data-rst="'+k+'">Acak ulang</button></div><div class="msg" id="p5Msg" role="status"></div>';
+      if(st[k].stage>=1){h+='<div class="callout green"><b class="h">Urutan benar</b>Indeks mulai dari 0, jadi posisi ke-1 berindeks 0.</div><p><b>'+c.q+'</b></p><div class="fld"><label>Jawabanmu<input id="p5Ans" type="text" maxlength="12" style="width:120px" autocomplete="off"></label><button class="btn" type="button" data-ans="'+k+'">Jawab</button></div><div class="msg" id="p5Msg2" role="status"></div>';}
+    }
+    $('#p5Box').innerHTML=h;paintSeg();
+  }
+  $('#p5Seg').addEventListener('click',function(e){var b=e.target.closest('button[data-k]');if(b){cur=b.dataset.k;draw();}});
+  $('#p5Box').addEventListener('click',function(e){
+    var t=e.target.closest('button');if(!t)return;var k=cur;
+    if(t.dataset.mv!==undefined){var i=+t.dataset.mv,d=+t.dataset.d,a=st[k].arr,j=i+d;if(j<0||j>=a.length)return;var x=a[i];a[i]=a[j];a[j]=x;st[k].stage=0;draw();var nb=$$('#p5Box .ar')[j];if(nb)$$('button',nb)[d<0?0:1].focus();return;}
+    if(t.dataset.p){var s=st.bazar;s.sel[t.dataset.p]=!s.sel[t.dataset.p];s.stage=0;draw();return;}
+    if(t.dataset.j){st.bazar.jenis=t.dataset.j;st.bazar.stage=0;draw();return;}
+    if(t.dataset.rst){if(k==='bazar')st.bazar={sel:{},jenis:'',stage:0};else{st[k]={arr:C[k].init.slice().reverse(),stage:0};}draw();return;}
+    if(t.dataset.chk){
+      var m=$('#p5Msg');
+      if(k==='bazar'){var s2=st.bazar,chosen=BZ.pool.filter(function(x){return s2.sel[x];});
+        var okSet=chosen.length===BZ.need.length&&BZ.need.every(function(x){return s2.sel[x];});
+        if(!chosen.length){setMsg(m,'Pilih dulu bahan yang diperlukan.');return;}
+        if(!okSet){setMsg(m,'Bahan belum tepat. Bazar es buah hanya perlu bahan untuk membuat es buah dan menyajikannya. Cek lagi: adakah yang tidak berhubungan?');return;}
+        if(!s2.jenis){setMsg(m,'Tentukan jenis list: terurut atau tidak terurut.');return;}
+        if(s2.jenis!=='tidak'){setMsg(m,'Bahan boleh dibeli kapan saja, jadi tidak ada aturan urutan khusus. Pilih “Tidak terurut”.');return;}
+        s2.stage=1;draw();setMsg($('#p5Msg'),'Bahan dan jenis list tepat! Item diberi posisi 1 sampai 5 (indeks 0 sampai 4).',true);return;}
+      var arr=st[k].arr,ans=C[k].ans,bad=-1;for(var q=0;q<ans.length;q++){if(arr[q]!==ans[q]){bad=q;break;}}
+      if(bad>=0){setMsg(m,'Belum tepat. Posisi ke-'+(bad+1)+' belum sesuai urutan abjad. Bandingkan huruf awalnya.');return;}
+      st[k].stage=1;draw();return;
+    }
+    if(t.dataset.ans){var m2=$('#p5Msg2'),v=norm($('#p5Ans').value),right=(k==='bazar')?'6':C[k].qa;
+      if(!v){setMsg(m2,'Isi jawabanmu dulu.');return;}
+      if(norm(right)===v||(k!=='bazar'&&v.indexOf(norm(right))>=0)){setMsg(m2,'Benar! Kasus selesai.',true);pass(k);}
+      else setMsg(m2,'Belum tepat. '+(k==='bazar'?'Awalnya 5 item, ditambah 1 item di akhir.':C[k].hint));}
+  });
+  init();paintSeg();draw();
+})();
+
+/* =====================================================
+   PRAKTIK 6 · kasir kantin
+   ===================================================== */
+(function(){
+  var IT=[['Nasi kuning',5000],['Es teh',3000],['Gorengan',2000],['Air mineral',3000],['Roti',4000]],sel={};
+  function draw(){
+    var pay=parseInt(($('#p6Pay').value||'').replace(/\D/g,''),10)||0;
+    var ch=IT.filter(function(x,i){return sel[i];});
+    var mn=ch.length>1?Math.min.apply(null,ch.map(function(x){return x[1];})):-1,mx=ch.length>1?Math.max.apply(null,ch.map(function(x){return x[1];})):-1;
+    $('#p6Items').innerHTML=IT.map(function(x,i){var tg=(sel[i]&&ch.length>1&&x[1]===mn&&mn!==mx)?'<span class="tg min">termurah</span>':((sel[i]&&ch.length>1&&x[1]===mx&&mn!==mx)?'<span class="tg max">termahal</span>':'');
+      return '<label class="'+(sel[i]?'on':'')+'"><input type="checkbox" data-i="'+i+'"'+(sel[i]?' checked':'')+'> <span>'+x[0]+'</span>'+tg+'<span class="pr">Rp'+rp(x[1])+'</span></label>';}).join('');
+    var tot=ch.reduce(function(a,x){return a+x[1];},0);
+    $('#p6Stats').innerHTML='<div class="stat"><small>Barang dipilih</small><b>'+ch.length+'</b></div><div class="stat"><small>Total belanja</small><b>Rp'+rp(tot)+'</b></div><div class="stat"><small>'+(pay>=tot?'Kembalian':'Uang kurang')+'</small><b>'+(pay?'Rp'+rp(Math.abs(pay-tot)):'—')+'</b></div>';
+    var m=$('#p6Msg');
+    if(sel[0]&&sel[1]&&sel[2]&&ch.length===3&&pay===15000){setMsg(m,'Tepat! 5.000 + 3.000 + 2.000 = Rp10.000. Uang Rp15.000 − Rp10.000 = kembalian Rp5.000.',true);markDone('p6');}
+    else if(ch.length&&pay&&pay<tot)setMsg(m,'Uangnya belum cukup untuk membayar belanjaan.');
+    else hideMsg(m);
+  }
+  $('#p6Items').addEventListener('change',function(e){var c=e.target.closest('input[data-i]');if(c){sel[+c.dataset.i]=c.checked;draw();var n=$('#p6Items input[data-i="'+c.dataset.i+'"]');if(n)n.focus();}});
+  $('#p6Pay').addEventListener('input',draw);
+  draw();
+})();
+
+/* =====================================================
+   LATIHAN
+   ===================================================== */
+var Q=[
+ {q:'Pernyataan yang paling tepat tentang himpunan data terstruktur adalah …',o:['kumpulan data acak tanpa aturan','kumpulan data yang ditata dalam baris dan kolom berlabel','kumpulan gambar saja','catatan lisan'],a:1,e:'Data terstruktur ditata dengan aturan, umumnya tabel berbaris-berkolom dengan judul kolom.'},
+ {q:'Satu jenis data untuk semua objek pada tabel disebut …',o:['baris','sel','kolom','indeks'],a:2,e:'Kolom (field) menyimpan satu jenis data, misalnya semua nilai.'},
+ {q:'Berikut contoh data terstruktur bervolume kecil, yaitu …',o:['daftar harga kantin','pesan suara','cerita pendek','lagu'],a:0,e:'Daftar harga tersusun dalam kolom Nama dan Harga.'},
+ {q:'Daftar belanja: Beras, Minyak, Garam, Gula. Item pada posisi ke-3 adalah …',o:['Beras','Minyak','Garam','Gula'],a:2,e:'Hitung dari 1: Beras (1), Minyak (2), Garam (3).'},
+ {q:'Daftar siswa urut abjad termasuk list …',o:['tidak terurut','terurut','kosong','bukan list'],a:1,e:'Urut abjad adalah aturan urutan, jadi list terurut.'},
+ {q:'Pada list [Buku, Pensil, Spidol], indeks item “Spidol” (indeks dimulai dari 0) adalah …',o:['0','1','2','3'],a:2,e:'Spidol di posisi ke-3, indeksnya 3 − 1 = 2.'},
+ {q:'Item “Dina” pada list [Ali, Budi, Citra, Dina] berada di posisi ke-4. Indeksnya adalah …',o:['1','3','4','5'],a:1,e:'Indeks = posisi − 1 = 4 − 1 = 3.'},
+ {q:'Daftar belanja berisi 5 item. Setelah operasi “tambah” satu item di akhir, panjang list menjadi …',o:['4','5','6','7'],a:2,e:'5 + 1 = 6 item.'},
+ {q:'Manakah yang BUKAN ciri himpunan data terstruktur?',o:['Kolom diberi judul','Setiap baris punya kolom yang sama','Satu kolom boleh mencampur nama dan angka','Mudah dicari dan dihitung'],a:2,e:'Ciri yang benar: satu kolom berisi satu jenis data.'},
+ {q:'Pada list 5 item, item di posisi ke-2 dihapus. Apa yang terjadi?',o:['Item sesudahnya bergeser maju dan panjang list menjadi 4','Item sesudahnya tetap, ada ruang kosong','Panjang list tetap 5','Seluruh list terhapus'],a:0,e:'Pada operasi hapus, item sesudahnya bergeser maju.'}
+];
+(function(){
+  var L='ABCD';
+  function res(){
+    var r=quizScore(),box=$('#quizRes');
+    if(r.a<Q.length){box.hidden=true;return;}
+    box.hidden=false;var n=r.s*10;
+    box.innerHTML='<b class="h">Nilai: '+n+' ('+r.s+' dari 10 benar)</b>'+(r.s>=7?'Bagus! Misi latihan selesai.':'Belum mencapai 70. Baca lagi bagian yang salah, lalu ulangi kuis.');
+  }
+  function draw(){
+    $('#quizBox').innerHTML=Q.map(function(q,i){
+      var ch=S.quiz[i],done=ch!==undefined;
+      return '<div class="q'+(done?(ch===q.a?' ok':' no'):'')+'" data-i="'+i+'"><div class="qt">'+(i+1)+'. '+esc(q.q)+(i>=6?' <span class="pill o">tambahan</span>':'')+'</div>'+
+        q.o.map(function(o,j){var c='op'+(done?(j===q.a?' right':(j===ch?' wrong':'')):'');return '<button type="button" class="'+c+'" data-j="'+j+'"'+(done?' disabled':'')+'><span class="l">'+L[j]+'</span><span>'+esc(o)+'</span></button>';}).join('')+
+        '<div class="fb'+(done?' show':'')+'">'+(done?(ch===q.a?'<b>Benar.</b> ':'<b>Belum tepat.</b> ')+esc(q.e):'')+'</div></div>';
+    }).join('');
+    res();
+  }
+  $('#quizBox').addEventListener('click',function(e){var b=e.target.closest('button[data-j]');if(!b)return;var i=+b.closest('.q').dataset.i;if(S.quiz[i]!==undefined)return;S.quiz[i]=+b.dataset.j;save();draw();paintProg();if(quizPass()&&quizScore().a===Q.length)toast('Latihan selesai ✓');});
+  $('#quizRst').addEventListener('click',function(){S.quiz={};save();draw();paintProg();window.scrollTo(0,$('nav.tabs').offsetTop);});
+  draw();
+  $$('textarea[data-u]').forEach(function(t){t.value=S.ur[t.dataset.u]||'';t.addEventListener('input',function(){S.ur[t.dataset.u]=t.value;save();});});
+})();
+
+/* =====================================================
+   REFLEKSI
+   ===================================================== */
+(function(){
+  var RT=[['t1','Aku bisa menjelaskan himpunan data terstruktur dan cirinya'],['t2','Aku bisa memberi ≥3 contoh data terstruktur bervolume kecil'],['t3','Aku bisa menjelaskan list, indeks, terurut dan tidak terurut'],['t4','Aku bisa menyusun list dari kasus sederhana']];
+  var OP=['Belum','Hampir','Sudah'];
+  $('#rateBox').innerHTML=RT.map(function(r){return '<div class="rw"><div>'+r[1]+'</div><div class="ch">'+OP.map(function(o,j){return '<label><input type="radio" name="'+r[0]+'" value="'+j+'"'+(S.rate[r[0]]===j?' checked':'')+'><span>'+o+'</span></label>';}).join('')+'</div></div>';}).join('');
+  $('#rateBox').addEventListener('change',function(e){var i=e.target;if(i.name){S.rate[i.name]=+i.value;save();}});
+  $$('textarea[data-r]').forEach(function(t){t.value=S.refl[t.dataset.r]||'';t.addEventListener('input',function(){S.refl[t.dataset.r]=t.value;save();paintProg();});});
+  $('#rNama').value=S.name||'';$('#rKelas').value=S.kelas||'';
+  $('#rNama').addEventListener('input',function(){S.name=this.value;save();});
+  $('#rKelas').addEventListener('input',function(){S.kelas=this.value;save();});
+  $('#btnPrint').addEventListener('click',function(){window.print();});
+  var was=[];
+  window.addEventListener('beforeprint',function(){was=$$('details').map(function(d){return d.open;});$$('details').forEach(function(d){d.open=true;});});
+  window.addEventListener('afterprint',function(){$$('details').forEach(function(d,i){d.open=was[i];});});
+  $('#btnCopy').addEventListener('click',function(){
+    var t=total(),qs=quizScore(),lines=['Ringkasan BK2-TP1 · Himpunan Data Terstruktur dan List','Nama: '+(S.name||'-')+' · Kelas: '+(S.kelas||'-'),'Materi dipahami: '+t.p+'/4','Ruang praktik selesai: '+t.l+'/6','Latihan PG: '+(qs.a?(qs.s*10)+' ('+qs.s+'/10)':'belum dikerjakan')];
+    RT.forEach(function(r){lines.push('- '+r[1]+': '+(S.rate[r[0]]!==undefined?OP[S.rate[r[0]]]:'-'));});
+    ['r1','r2','r3','r4'].forEach(function(k,i){if((S.refl[k]||'').trim())lines.push('Refleksi '+(i+1)+': '+S.refl[k].trim());});
+    var txt=lines.join('\n');
+    function fallback(){var a=document.createElement('textarea');a.value=txt;a.style.position='fixed';a.style.opacity='0';document.body.appendChild(a);a.select();var ok=false;try{ok=document.execCommand('copy');}catch(e){}document.body.removeChild(a);toast(ok?'Ringkasan disalin':'Tidak bisa menyalin. Gunakan tombol Cetak.');}
+    try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){toast('Ringkasan disalin');},fallback);}else fallback();}catch(e){fallback();}
+  });
+  $('#btnReset').addEventListener('click',function(){if(confirm('Hapus semua progres, jawaban, dan refleksi di perangkat ini?')){try{localStorage.removeItem(KEY);}catch(e){}location.hash='';location.reload();}});
+})();
+
+/* ---------- bilah baca, tombol ke atas ---------- */
+(function(){
+  var bar=$('#rbar'),top=$('#top'),tick2=false;
+  function f(){tick2=false;var h=document.documentElement,m=h.scrollHeight-h.clientHeight;bar.style.width=(m>0?h.scrollTop/m*100:0)+'%';top.classList.toggle('on',h.scrollTop>600);}
+  window.addEventListener('scroll',function(){if(!tick2){tick2=true;requestAnimationFrame(f);}},{passive:true});
+  top.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+})();
+
+/* ---------- mulai ---------- */
+applyFz();applyTheme();paintChal();paintProg();showTab({init:true});
+})();
+
+</script>
+</body>
+</html>
